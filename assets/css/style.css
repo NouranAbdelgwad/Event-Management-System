@@ -46,9 +46,10 @@ body{
     margin: 0px 5px;
 }
 
-
 .footer{
     background-color: var(--purple);
     color: white;
     text-align: center;
 }
+
+/* Admin Workshops & Admin Visitors == Noha work */
