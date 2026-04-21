@@ -1,0 +1,54 @@
+/* Layout == Nouran work */
+:root{
+    --purple: #472480;
+}
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    height: 50px;
+    padding: 0px 10px;
+    font-family:monospace;
+
+}
+
+.logo{
+    color: var(--purple);
+}
+
+.navbar-btn{
+    background-color: var(--purple);
+    color: white;
+    border-radius: 30px;
+    border: 1px solid transparent;
+    padding: 10px 30px;
+}
+.profile-icon{
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+.navbar ul{
+    display: flex;
+    list-style: none;
+    
+}
+.navbar a{
+    color: black;
+    text-decoration: none;
+    font-weight: bolder;
+    margin: 0px 5px;
+}
+
+
+.footer{
+    background-color: var(--purple);
+    color: white;
+    text-align: center;
+}
