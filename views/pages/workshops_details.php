@@ -3,60 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Workshop Details</title>
+    <title>Workshop Details - AI Event</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background-color: #f8f9fa; margin: 0; padding: 0; }
-        .details-container { max-width: 800px; margin: 50px auto; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .hero-section { background: #1a73e8; color: white; padding: 60px 40px; text-align: center; }
-        .hero-section h1 { margin: 0; font-size: 36px; }
-        .content-section { padding: 40px; }
-        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
-        .info-item { font-size: 16px; color: #555; }
-        .info-item strong { color: #333; display: block; margin-bottom: 5px; }
-        .description h3 { color: #333; margin-top: 0; }
-        .description p { line-height: 1.8; color: #666; font-size: 16px; }
-        .btn-register { display: inline-block; background: #28a745; color: white; padding: 15px 35px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 18px; margin-top: 20px; transition: 0.3s; }
-        .btn-register:hover { background: #218838; }
-        .back-link { display: inline-block; margin-top: 30px; color: #1a73e8; text-decoration: none; font-weight: 600; }
+        :root { --main-purple: #5a2d82; --light-purple: #f8f7ff; }
+        body { font-family: 'Inter', sans-serif; background-color: #fff; margin: 0; color: #333; }
+        .details-container { max-width: 900px; margin: 50px auto; padding: 0 20px; }
+        .back-link { text-decoration: none; color: var(--main-purple); font-size: 0.9rem; margin-bottom: 20px; display: inline-block; }
+        .details-header { display: flex; gap: 40px; align-items: flex-start; margin-top: 20px; }
+        .details-img { width: 450px; height: 300px; border-radius: 15px; object-fit: cover; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .details-info h1 { font-size: 2rem; color: #111; margin: 0 0 15px 0; }
+        .speaker-name { font-size: 1.1rem; color: var(--main-purple); font-weight: 600; margin-bottom: 20px; }
+        .meta-info { background: var(--light-purple); padding: 15px; border-radius: 10px; margin-bottom: 25px; }
+        .meta-info p { margin: 5px 0; font-size: 0.9rem; color: #555; }
+        .description { line-height: 1.8; color: #666; font-size: 1rem; }
+        .btn-register { background: var(--main-purple); color: white; padding: 12px 35px; border-radius: 25px; text-decoration: none; display: inline-block; margin-top: 30px; font-weight: 500; }
+        .footer-line { background-color: var(--main-purple); color: white; text-align: center; padding: 15px; margin-top: 80px; font-size: 0.8rem; }
     </style>
 </head>
 <body>
+    <?php 
+    $navType = "home";
+    include("../components/navbar.php");
+    ?>
 
-<div class="details-container">
-    <div class="hero-section">
-        <h1>Workshop Details</h1>
-    </div>
-    
-    <div class="content-section">
-        <div class="description">
-            <h3>About this Workshop</h3>
-            <p>This is a comprehensive workshop designed to take you from a beginner level to an advanced understanding. You will learn practical skills, work on real-world projects, and get feedback from industry experts.</p>
-        </div>
+    <div class="details-container">
+        <a href="workshops.php" class="back-link">← Back to Workshops</a>
+        
+        <div class="details-header">
+            <img src="../../assets/images/ai-design.jpg" class="details-img" alt="Workshop Image">
+            <div class="details-info">
+                <h1>AI for Designers</h1>
+                <p class="speaker-name">By Eng. Ziad Abdelazeem</p>
+                
+                <div class="meta-info">
+                    <p><strong>Date:</strong> 25th April 2026</p>
+                    <p><strong>Time:</strong> 5:00 PM - 7:00 PM</p>
+                    <p><strong>Location:</strong> Hall A - Virtual</p>
+                </div>
 
-        <div class="info-grid">
-            <div class="info-item">
-                <strong>Instructor</strong>
-                Professional Instructor Name
-            </div>
-            <div class="info-item">
-                <strong>Date & Time</strong>
-                October 15, 2026 | 10:00 AM
-            </div>
-            <div class="info-item">
-                <strong>Location</strong>
-                Virtual Meeting (Zoom) / Main Hall
-            </div>
-            <div class="info-item">
-                <strong>Duration</strong>
-                3 Hours
+                <div class="description">
+                    This workshop explores how artificial intelligence is shaping the future of the creative industry. 
+                    From UI/UX enhancements to automated assets generation, learn how to leverage AI tools in your workflow.
+                </div>
+
+                <a href="#" class="btn-register">Register Now</a>
             </div>
         </div>
-
-        <a href="#" class="btn-register">Register Now</a>
-        <br>
-        <a href="workshops.php" class="back-link">← Back to all workshops</a>
     </div>
-</div>
 
+    <div class="footer-line">
+        © 2026 AI Event Platform. All rights reserved.
+    </div>
 </body>
 </html>
