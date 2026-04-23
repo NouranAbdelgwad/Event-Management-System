@@ -54,7 +54,6 @@ body{
 
 /* Login & Register == Mennagamal work */
 
-/* الحاوية الأساسية اللي بتجمع الفورم والصورة */
 .menna-login-container {
     display: flex;
     justify-content: space-between;
@@ -64,7 +63,6 @@ body{
     gap: 50px;
 }
 
-/* الجزء الخاص بالفورم */
 .menna-login-content {
     flex: 1;
     display: flex;
@@ -81,7 +79,6 @@ body{
     font-family: sans-serif;
 }
 
-/* تنسيق حقول الإدخال */
 .menna-input-field {
     width: 100%;
     max-width: 380px;
@@ -95,7 +92,6 @@ body{
     box-sizing: border-box;
 }
 
-/* تنسيق زر الـ Login */
 .menna-submit-btn {
     width: 160px;
     padding: 12px;
@@ -113,7 +109,6 @@ body{
     opacity: 0.9;
 }
 
-/* تنسيق جملة التسجيل */
 .menna-register-text {
     margin-top: 25px;
     font-size: 14px;
@@ -126,7 +121,6 @@ body{
     font-weight: bold;
 }
 
-/* الجزء الخاص بالصورة */
 .menna-image-section {
     flex: 1;
     display: flex;
