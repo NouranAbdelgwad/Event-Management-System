@@ -174,7 +174,6 @@ body{
 }
 
 /* Home == Menna Section */
-/* تنسيق صفحة الـ Home الأساسي */
 .event-container {
     padding: 60px 8%;
     display: flex;
@@ -182,17 +181,16 @@ body{
     gap: 50px;
     align-items: center;
 }
-/* تنسيق الجزء الخاص بـ About the event */
 .about-section {
-    padding: 40px 8%; /* مسافة من الجوانب عشان يتماشى مع باقي الصفحة */
+    padding: 40px 8%;
     display: flex;
     justify-content: center;
 }
 
 .about-card {
-    background-color: #F8F7FD; /* اللون البنفسجي الفاتح جداً اللي في الـ UI */
+    background-color: #F8F7FD;
     padding: 40px;
-    border-radius: 30px; /* حواف دائرية كبيرة زي الصورة */
+    border-radius: 30px;
     width: 100%;
     max-width: 1100px;
 }
@@ -206,11 +204,10 @@ body{
 
 .about-card p {
     font-size: 16px;
-    line-height: 1.8; /* مسافة بين السطور عشان الكلام يبقى مريح في القراية */
+    line-height: 1.8;
     color: #444;
-    text-align: justify; /* عشان السطور تكون متساوية من الجانبين */
+    text-align: justify;
 }
-/* تخطيط الجزء العلوي (صورة + نص) */
 .event-content {
     display: flex;
     align-items: center;
@@ -226,7 +223,7 @@ body{
 .event-image img {
     width: 100%;
     max-width: 500px;
-    border-radius: 30px; /* عشان تدي المنظر المنحني اللي في الـ UI */
+    border-radius: 30px;
 }
 
 .event-text {
@@ -240,10 +237,9 @@ body{
 }
 
 .event-text h1 span {
-    color: var(--purple); /* كلمة Chance بلون موف */
+    color: var(--purple);
 }
 
-/* تنسيق الزراير */
 .buttons {
     display: flex;
     gap: 15px;
