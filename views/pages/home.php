@@ -53,7 +53,7 @@
 
 </section>
 
-
+    <?php include("../components/workshop_card.php");?>
     <?php include("../components/footer.php");?>
 </body>
 </html>
