@@ -52,4 +52,84 @@ body{
     text-align: center;
 }
 
-/* Admin Workshops & Admin Visitors == Noha work */
+/* Login & Register == Mennagamal work */
+
+.menna-login-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 8%;
+    min-height: 80vh;
+    gap: 50px;
+}
+
+.menna-login-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.menna-welcome-title {
+    font-size: 32px;
+    font-weight: bold;
+    color: #1a1a1a;
+    margin-bottom: 40px;
+    font-family: sans-serif;
+}
+
+.menna-input-field {
+    width: 100%;
+    max-width: 380px;
+    padding: 15px 25px;
+    margin-bottom: 20px;
+    border: 1px solid #e0d9f0;
+    border-radius: 30px;
+    background-color: #f9f8ff;
+    font-size: 16px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.menna-submit-btn {
+    width: 160px;
+    padding: 12px;
+    background-color: var(--purple); /* استخدام المتغير المعرف مسبقاً */
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.menna-submit-btn:hover {
+    opacity: 0.9;
+}
+
+.menna-register-text {
+    margin-top: 25px;
+    font-size: 14px;
+    color: #555;
+}
+
+.menna-register-link {
+    color: #7b61ff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menna-image-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.menna-main-img {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
