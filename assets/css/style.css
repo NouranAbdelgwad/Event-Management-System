@@ -52,7 +52,7 @@ body{
     text-align: center;
 }
 
-/* Login & Register == Mennagamal work */
+/* Login Page == Mennagamal work */
 
 .menna-login-container {
     display: flex;
@@ -95,7 +95,7 @@ body{
 .menna-submit-btn {
     width: 160px;
     padding: 12px;
-    background-color: var(--purple); /* استخدام المتغير المعرف مسبقاً */
+    background-color: var(--purple); 
     color: white;
     border: none;
     border-radius: 25px;
@@ -132,4 +132,42 @@ body{
     max-width: 450px;
     border-radius: 40px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Register Page == Mennagamal work */
+
+.menna-reg-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    padding: 40px 10%;
+    min-height: 85vh;
+}
+
+.menna-file-input-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 380px;
+    background-color: #f9f8ff;
+    border: 1px solid #e0d9f0;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.menna-file-btn {
+    background-color: var(--purple);
+    color: white;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    border: none;
+}
+
+.menna-file-text {
+    padding-left: 15px;
+    color: #999;
+    font-size: 14px;
 }
