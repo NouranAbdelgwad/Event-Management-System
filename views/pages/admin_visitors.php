@@ -6,72 +6,37 @@
     <title>Admin - Visitors List</title>
     <link rel="stylesheet" href="../../assets/css/style.css">
     <style>
-        :root { --main-purple: #472480; }
         body { font-family: 'Inter', sans-serif; background-color: #fdfdfd; margin: 0; }
+        .admin-container { max-width: 1100px; margin: 40px auto; padding: 20px; }
         
-        .admin-container { 
-            max-width: 1100px; 
-            margin: 50px auto; 
-            padding: 20px; 
-            background: white; 
-            border-radius: 15px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
-        }
+        h2 { color: #472480; margin-bottom: 25px; }
 
-        .header-section {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            border-bottom: 2px solid #f0f0f0;
-            padding-bottom: 15px;
-        }
-
-        .header-section h2 { color: var(--main-purple); margin: 0; }
-
-        /* Table Styling */
+        /* Table Styling matching your branding */
         .visitors-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 10px;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-radius: 10px;
+            overflow: hidden;
         }
 
         .visitors-table th {
-            background-color: var(--main-purple);
+            background-color: #472480; /* Your purple color */
             color: white;
             padding: 15px;
             text-align: left;
-            font-size: 15px;
         }
 
         .visitors-table td {
             padding: 12px 15px;
             border-bottom: 1px solid #eee;
-            color: #444;
-            font-size: 14px;
+            color: #333;
         }
 
         .visitors-table tr:hover { background-color: #f8f7ff; }
 
-        .status-badge {
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            background: #e8f5e9;
-            color: #2e7d32;
-            font-weight: 600;
-        }
-
-        /* Using your button style for any actions */
-        .btn-export {
-            background: var(--main-purple);
-            color: white;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 18px;
-            cursor: pointer;
-            font-size: 14px;
-        }
+        .status { color: #28a745; font-weight: bold; font-size: 13px; }
     </style>
 </head>
 <body>
@@ -81,35 +46,32 @@
     ?>
 
     <div class="admin-container">
-        <div class="header-section">
-            <h2>Registered Visitors</h2>
-            <button class="btn-export">Export to Excel</button>
-        </div>
+        <h2>Registered Visitors</h2>
         
         <table class="visitors-table">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Visitor Name</th>
-                    <th>Email</th>
-                    <th>Workshop Title</th>
+                    <th>Full Name</th>
+                    <th>Email Address</th>
+                    <th>Workshop</th>
                     <th>Status</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>#101</td>
-                    <td>Ahmed Khaled</td>
-                    <td>ahmed@example.com</td>
-                    <td>AI for Designers</td>
-                    <td><span class="status-badge">Registered</span></td>
+                    <td>#001</td>
+                    <td>Ahmed Ali</td>
+                    <td>ahmed@mail.com</td>
+                    <td>AI Fundamentals</td>
+                    <td><span class="status">Confirmed</span></td>
                 </tr>
                 <tr>
-                    <td>#102</td>
-                    <td>Mona Hassan</td>
-                    <td>mona@example.com</td>
-                    <td>UI/UX Fundamentals</td>
-                    <td><span class="status-badge">Registered</span></td>
+                    <td>#002</td>
+                    <td>Sara Mohamed</td>
+                    <td>sara@mail.com</td>
+                    <td>Design with AI</td>
+                    <td><span class="status">Confirmed</span></td>
                 </tr>
             </tbody>
         </table>
