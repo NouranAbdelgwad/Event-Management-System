@@ -1,52 +1,56 @@
 /* Layout == Nouran work */
-:root{
+:root {
     --purple: #472480;
 }
-body{
+
+body {
     margin: 0px;
     padding: 0px;
 }
 
-.navbar{
+.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
     height: 50px;
     padding: 0px 10px;
-    font-family:monospace;
+    font-family: monospace;
 
 }
 
-.logo{
+.logo {
     color: var(--purple);
 }
 
-.navbar-btn{
+.navbar-btn {
     background-color: var(--purple);
     color: white;
     border-radius: 30px;
     border: 1px solid transparent;
     padding: 10px 30px;
 }
-.profile-icon{
+
+.profile-icon {
     width: 40px;
     height: 40px;
     object-fit: cover;
 }
-.navbar ul{
+
+.navbar ul {
     display: flex;
     list-style: none;
-    
+
 }
-.navbar a{
+
+.navbar a {
     color: black;
     text-decoration: none;
     font-weight: bolder;
     margin: 0px 5px;
 }
 
-.footer{
+.footer {
     background-color: var(--purple);
     color: white;
     text-align: center;
