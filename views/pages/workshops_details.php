@@ -4,59 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Workshop Details</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background-color: #f8f9fa; margin: 0; padding: 0; }
-        .details-container { max-width: 800px; margin: 50px auto; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .hero-section { background: #1a73e8; color: white; padding: 60px 40px; text-align: center; }
-        .hero-section h1 { margin: 0; font-size: 36px; }
-        .content-section { padding: 40px; }
-        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
-        .info-item { font-size: 16px; color: #555; }
-        .info-item strong { color: #333; display: block; margin-bottom: 5px; }
-        .description h3 { color: #333; margin-top: 0; }
-        .description p { line-height: 1.8; color: #666; font-size: 16px; }
-        .btn-register { display: inline-block; background: #28a745; color: white; padding: 15px 35px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 18px; margin-top: 20px; transition: 0.3s; }
-        .btn-register:hover { background: #218838; }
-        .back-link { display: inline-block; margin-top: 30px; color: #1a73e8; text-decoration: none; font-weight: 600; }
+        :root { --primary-color: #472480; }
+        body { font-family: 'Inter', sans-serif; background-color: #fff; margin: 0; color: #333; }
+        .details-container { max-width: 1100px; margin: 50px auto; padding: 0 20px; }
+        
+        /* Main Section (Your Friend's Part) */
+        .main-details { display: flex; gap: 50px; align-items: flex-start; margin-bottom: 80px; flex-wrap: wrap; }
+        .main-details img { width: 550px; height: 380px; border-radius: 20px; object-fit: cover; }
+        .info-content { flex: 1; min-width: 300px; }
+        .info-content h1 { font-size: 2.5rem; color: #111; margin: 0 0 10px 0; }
+        .speaker-tag { color: var(--primary-color); font-weight: 600; font-size: 1.1rem; margin-bottom: 25px; }
+        .meta-data { background: #fcfaff; padding: 20px; border-radius: 12px; margin-bottom: 30px; }
+        .meta-data p { margin: 10px 0; font-size: 0.95rem; display: flex; align-items: center; gap: 10px; }
+        .description-text { line-height: 1.8; color: #666; margin-bottom: 35px; }
+        
+        /* Using your button style */
+        .reg-btn { background: var(--primary-color); color: white; padding: 14px 40px; border-radius: 25px; text-decoration: none; display: inline-block; font-weight: 500; }
+
+        /* Other Workshops Section (Your Part) */
+        .other-workshops-title { font-size: 1.6rem; color: #111; margin-bottom: 30px; border-top: 1px solid #eee; padding-top: 50px; }
+        .mini-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
+        .mini-card { border: 1px solid #f0f0f0; border-radius: 15px; overflow: hidden; transition: 0.3s; }
+        .mini-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .mini-card img { width: 100%; height: 160px; object-fit: cover; }
     </style>
 </head>
 <body>
+    <?php include("../components/navbar.php"); ?>
 
-<div class="details-container">
-    <div class="hero-section">
-        <h1>Workshop Details</h1>
-    </div>
-    
-    <div class="content-section">
-        <div class="description">
-            <h3>About this Workshop</h3>
-            <p>This is a comprehensive workshop designed to take you from a beginner level to an advanced understanding. You will learn practical skills, work on real-world projects, and get feedback from industry experts.</p>
-        </div>
+    <div class="details-container">
+        <div class="main-details">
+            <img src="../../assets/images/ai-design.jpg" alt="Workshop Image">
+            <div class="info-content">
+                <h1>AI for Designers</h1>
+                <p class="speaker-tag">By Eng. Ziad Abdelazeem</p>
+                
+                <div class="meta-data">
+                    <p>📅 25th April 2026</p>
+                    <p>⏰ 5:00 PM - 7:00 PM</p>
+                    <p>📍 Hall A - Virtual</p>
+                </div>
 
-        <div class="info-grid">
-            <div class="info-item">
-                <strong>Instructor</strong>
-                Professional Instructor Name
-            </div>
-            <div class="info-item">
-                <strong>Date & Time</strong>
-                October 15, 2026 | 10:00 AM
-            </div>
-            <div class="info-item">
-                <strong>Location</strong>
-                Virtual Meeting (Zoom) / Main Hall
-            </div>
-            <div class="info-item">
-                <strong>Duration</strong>
-                3 Hours
+                <div class="description-text">
+                    Join us in this deep-dive session where we explore how artificial intelligence is reshaping 
+                    the creative industry. You will learn to use cutting-edge tools for layout generation, 
+                    color theory automation, and much more.
+                </div>
+
+                <a href="#" class="reg-btn">Register for Workshop</a>
             </div>
         </div>
 
-        <a href="#" class="btn-register">Register Now</a>
-        <br>
-        <a href="workshops.php" class="back-link">← Back to all workshops</a>
+        <h2 class="other-workshops-title">Other Workshops You Might Like</h2>
+        <div class="mini-grid">
+            <div class="mini-card">
+                <img src="../../assets/images/ai-intro.jpg">
+                <div class="bottom-row">
+                    <div class="time"><i>🕒</i> 4:00 PM</div>
+                    <button onclick="location.href='workshops_details.php'">View</button>
+                </div>
+            </div>
+            <div class="mini-card">
+                <img src="../../assets/images/data-ai.jpg">
+                <div class="bottom-row">
+                    <div class="time"><i>🕒</i> 6:00 PM</div>
+                    <button onclick="location.href='workshops_details.php'">View</button>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 
+    <?php include("../components/footer.php"); ?>
 </body>
 </html>
