@@ -24,7 +24,7 @@
                 
                 <input type="email" name="email" class="menna-input-field" placeholder="Enter your email" required>
                 
-                <input type="password" name="password" class="menna-input-field" placeholder="Enter your password" required>
+                <input type="text" name="password" class="menna-input-field" placeholder="Enter your password" required>
                 
                 <div class="menna-file-input-wrapper">
                     <label for="id-file" class="menna-file-btn">Select File</label>
