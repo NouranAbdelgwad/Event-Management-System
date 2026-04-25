@@ -1,184 +1,188 @@
-<!DOCTYPE html> 
-<html lang="ar" dir="rtl">  
-<head>  
-    <meta charset="UTF-8">  
-    <title>AI Event Platform</title>  
-    <link rel="stylesheet" href="style.css">  
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1200">
+    <title>AI Event - Laptop View</title>
     <style>
-        :root {
---purple: #5a2d82;
---light-bg: #f8f9fa;
---text-gray: #666;
-}
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
 
-body {
-font-family: sans-serif;
-background-color: #fff;
-margin: 0;
-}
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            min-width: 1200px;
+            padding: 20px 0;
+        }
 
-.container {
-max-width: 90%;
-margin: 0px auto;
-padding: 0 20px;
-}
+        .container {
+            width: 1100px; 
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+        }
 
-.section-header {
-display: flex;
-justify-content: space-between;
-align-items: center;
-margin-bottom: 20px;
-}
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+        }
 
-/* Main Card Styling */
-.main-card {
-display: flex;
-background: #fff;
-border-radius: 15px;
-box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-overflow: hidden;
-margin-bottom: 40px;
-}
+        .logo { color: #4B2A85; font-weight: bold; font-size: 1.5rem; }
 
-.card-image { flex: 1; background: #eee; }
-.card-image img { width: 100%; height: 100%; object-fit: cover; }
-.instructor{
-  color: #888;
-  font-size: 14px;
-  margin-bottom: 10px;
-}
-.card-content { flex: 1.5; padding: 30px; }
+        button {
+            background: #4B2A85;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+        }
 
-.workshops-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-gap: 15px;
-}
+        .btn-join-event { padding: 8px 25px; }
+        .btn-workshop { padding: 12px 30px; font-size: 0.9rem; }
+        .btn-card { padding: 6px 20px; font-size: 0.8rem; }
 
-.workshop-item {
-background: #fff;
-border-radius: 12px;
-box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-overflow: hidden;
-border: 1px solid #eee;
-}
-.workshop-item img{
-  width: 100%;
-  height: 120px;
-  object-fit: cover;
-}
-.item-info h4{
-  font-size: 14px;
-  margin: 5px 0;
-}
-.item-info p{
-  font-size: 12px;
-  color: #888;
-}
+        .main-event {
+            display: flex;
+            padding: 20px 50px 60px;
+            gap: 40px;
+            align-items: center;
+        }
 
-.btn-purple, .btn-main {
-background-color: var(--purple);
-color: white;
-border: none;
-padding: 10px 20px;
-border-radius: 20px;
-cursor: pointer;
-}
+        .main-img { width: 450px; border-radius: 20px; }
 
-.btn-sm {
-background-color: var(--purple);
-color: white;
-border: none;
-padding: 5px 15px;
-border-radius: 8px;
-}
-.card-footer{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 15px;
-}
-.main-footer {
-background-color: var(--purple);
-color: white;
-text-align: center;
-padding: 15px;
-margin-top: 40px;
-}
+        .details h3 { font-size: 2rem; color: #333; margin-bottom: 5px; }
+        .details .eng { color: #999; font-size: 0.9rem; margin-bottom: 15px; }
+        .details .desc { color: #666; line-height: 1.6; font-size: 0.95rem; margin-bottom: 10px; }
+
+        .time-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .time-text { color: #4B2A85; font-weight: bold; font-size: 0.9rem; }
+
+        .workshops-section {
+            background-color: #F8F9FA;
+            border-radius: 50px 50px 0 0;
+            padding: 40px 50px;
+            margin-top: -30px;
+            position: relative;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            padding-bottom: 15px;
+        }
+
+        .card img { width: 100%; height: 160px; object-fit: cover; }
+        .card-info { padding: 15px; }
+        .card-info h5 { margin-bottom: 5px; }
+        .card-info p { color: #999; font-size: 0.8rem; margin-bottom: 15px; }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px;
+        }
+
+        footer {
+            background-color: #4B2A85;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 0.85rem;
+        }
     </style>
-</head>  
-<body>  <div class="container">  
-    <header class="section-header">  
-        <h2>.AI EVENT</h2>  
-        <button class="btn-main">Join Event</button>  
-    </header>  
+</head>
+<body>
 
-    <div class="main-card">  
-        <div class="card-image">  
-            <img src="IMG_20260423_200624_227.jpg">  
-        </div>  
-        <div class="card-content">  
-            <h3>Data & AI Fundamentals</h3>  
-            <p class="instructor">Eng. Ashraf Emad</p>  
-            <p class="description">  
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut nisi ut aliquip ex ea commodo consequat  
-            </p>  
-            <div class="card-footer">  
-                <span>🕒 7:00 PM  9:00 - PM</span>  
-                <button class="btn-purple">Join Workshop</button>  
-            </div>  
-        </div>  
-    </div>  
+<div class="container">
+    <header>
+        <div class="logo">AI EVENT.</div>
+        <button class="btn-join-event">Join Event</button>
+    </header>
 
-    <div class="other-workshops">  
-        <div class="section-header">  
-            <h3>Other Workshops</h3>  
-            <a href="#" class="see-all">See All</a>  
-        </div>  
-          
-        <div class="workshops-grid">  
-            <div class="workshop-item">  
-                <img src="IMG_20260423_200547_179.jpg">  
-                <div class="item-info">  
-                    <h4>Introduction to AI</h4>  
-                    <p>Eng. Sarah Ahmed</p>  
-                    <div class="item-footer">  
-                        <span>🕒3:00 PM  5:00 - PM</span>  
-                        <button class="btn-sm">Join</button>  
-                    </div>  
-                </div>  
-            </div>  
+    <section class="main-event">
+        <img src="assets/images/ai3.png" class="main-img">
+        <div class="details">
+            <h3>Data & AI Fundamentals</h3>
+            <p class="eng">Eng. Ashraf Emad</p>
+            <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+                <div class="time-row">
+                <span class="time-text">🕒 7:00 PM - 9:00 PM</span>
+                <button class="btn-workshop">Join Workshop</button>
+            </div>
+        </div>
+    </section>
 
-            <div class="workshop-item">  
-                <img src="IMG_20260423_200547_786.jpg">  
-                <div class="item-info">  
-                    <h4>AI for Designers</h4>  
-                    <p>Eng. Zayad Abdelazeem</p>  
-                    <div class="item-footer">  
-                        <span>🕒5:00 PM  7:00 - PM</span>  
-                        <button class="btn-sm">Join</button>  
-                    </div>  
-                </div>  
-            </div>  
+    <div class="workshops-section">
+        <div class="section-header">
+            <h4>Other Workshops</h4>
+            <a href="#" style="color: #4B2A85; font-weight: bold; text-decoration: none; font-size: 0.8rem;">See All</a>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <img src="assets/images/ai1.png">
+                <div class="card-info">
+                    <h5>Introduction to AI</h5>
+                    <p>Eng. Sarah Ahmed</p>
+                </div>
+                <div class="card-footer">
+                    <span style="font-size: 0.75rem; font-weight: bold;">🕒 3:00 PM - 5:00 PM</span>
+                    <button class="btn-card">Join</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="assets/images/ai2.png">
+                <div class="card-info">
+                    <h5>AI for Designers</h5>
+                    <p>Eng. Zeyad Abdelazeem</p>
+                </div>
+                <div class="card-footer">
+                    <span style="font-size: 0.75rem; font-weight: bold;">🕒 5:00 PM - 7:00 PM</span>
+                    <button class="btn-card">Join</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="assets/images/ai3.png">
+                <div class="card-info">
+                    <h5>Data & AI Fundamentals</h5>
+                    <p>Eng. Ashraf Emad</p>
+                </div>
+                <div class="card-footer">
+                    <span style="font-size: 0.75rem; font-weight: bold;">🕒 7:00 PM - 9:00 PM</span>
+                    <button class="btn-card">Join</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            <div class="workshop-item">  
-                <img src="IMG_20260423_200624_227.jpg">  
-                <div class="item-info">  
-                    <h4>Data & AI Fundamentals</h4>  
-                    <p>Eng. Ashraf Emad</p>  
-                    <div class="item-footer">  
-                        <span>🕒 5:00 PM 7:00 - PM</span>  
-                        <button class="btn-sm">Join</button>  
-                    </div>  
-                </div>  
-            </div>  
-        </div>  
-    </div>  
-</div>  
+    <footer>
+        © 2026 AI Event Platform. All rights reserved.
+    </footer>
+</div>
 
-<footer class="main-footer">  
-    .© 2026 AI Event Platform. All rights reserved
-</footer>
-
-</body>  
+</body>
 </html>
