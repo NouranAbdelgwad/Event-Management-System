@@ -144,7 +144,7 @@
         </div>
         <div class="grid">
             <div class="card">
-                <img src="assets/images/ai1 .png">
+                <img src="assets/images/ai1.png">
                 <div class="card-info">
                     <h5>Introduction to AI</h5>
                     <p>Eng. Sarah Ahmed</p>
