@@ -35,9 +35,14 @@
         }
 
         .visitors-table tr:hover { background-color: #f8f7ff; }
-
-        .status { color: #28a745; font-weight: bold; font-size: 13px; }
-    </style>
+        .cancel{
+            color: red;
+            border-radius: 10px;
+            border: 1px red solid;
+            background-color: transparent;
+            color: red;
+        }
+</style>
 </head>
 <body>
     <?php 
@@ -55,7 +60,7 @@
                     <th>Full Name</th>
                     <th>Email Address</th>
                     <th>Workshop</th>
-                    <th>Status</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -64,14 +69,14 @@
                     <td>Ahmed Ali</td>
                     <td>ahmed@mail.com</td>
                     <td>AI Fundamentals</td>
-                    <td><span class="status">Confirmed</span></td>
+                    <td><button class="cancel">Cancel</button></td>
                 </tr>
                 <tr>
                     <td>#002</td>
                     <td>Sara Mohamed</td>
                     <td>sara@mail.com</td>
                     <td>Design with AI</td>
-                    <td><span class="status">Confirmed</span></td>
+                    <td><button class="cancel" >Cancel</button></td>
                 </tr>
             </tbody>
         </table>

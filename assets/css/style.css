@@ -1,59 +1,534 @@
 /* Layout == Nouran work */
-:root {
+:root{
     --purple: #472480;
 }
-
-body {
+body{
     margin: 0px;
     padding: 0px;
 }
 
-.navbar {
+.navbar{
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
     height: 50px;
     padding: 0px 10px;
-    font-family: monospace;
+    font-family:monospace;
 
 }
 
-.logo {
+.logo{
     color: var(--purple);
 }
 
-.navbar-btn {
+.navbar-btn{
     background-color: var(--purple);
     color: white;
     border-radius: 30px;
     border: 1px solid transparent;
     padding: 10px 30px;
 }
-
-.profile-icon {
+.profile-icon{
     width: 40px;
     height: 40px;
     object-fit: cover;
 }
-
-.navbar ul {
+.navbar ul{
     display: flex;
     list-style: none;
 
 }
-
-.navbar a {
+.navbar a{
     color: black;
     text-decoration: none;
     font-weight: bolder;
     margin: 0px 5px;
 }
 
-.footer {
+.footer{
     background-color: var(--purple);
     color: white;
     text-align: center;
 }
 
-/* Admin Workshops & Admin Visitors == Noha work */
+/* Login Page == Mennagamal work */
+
+.menna-login-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 8%;
+    min-height: 80vh;
+    gap: 50px;
+}
+
+.menna-login-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.menna-welcome-title {
+    font-size: 32px;
+    font-weight: bold;
+    color: #1a1a1a;
+    margin-bottom: 40px;
+    font-family: sans-serif;
+}
+
+.menna-input-field {
+    width: 100%;
+    max-width: 380px;
+    padding: 15px 25px;
+    margin-bottom: 20px;
+    border: 1px solid #e0d9f0;
+    border-radius: 30px;
+    background-color: #f9f8ff;
+    font-size: 16px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+
+.menna-submit-btn {
+    width: 160px;
+    padding: 12px;
+    background-color: var(--purple); 
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.menna-submit-btn:hover {
+    opacity: 0.9;
+}
+
+.menna-register-text {
+    margin-top: 25px;
+    font-size: 14px;
+    color: #555;
+}
+
+.menna-register-link {
+    color: #7b61ff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menna-image-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.menna-main-img {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Register Page == Mennagamal work */
+
+.menna-reg-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    padding: 40px 10%;
+    min-height: 85vh;
+}
+
+.menna-file-input-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 380px;
+    background-color: #f9f8ff;
+    border: 1px solid #e0d9f0;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.menna-file-btn {
+    background-color: var(--purple);
+    color: white;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    border: none;
+}
+
+.menna-file-text {
+    padding-left: 15px;
+    color: #999;
+    font-size: 14px;
+}
+
+/* Home == Menna Section */
+.event-container {
+    padding: 60px 8%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+}
+.about-section {
+    padding: 40px 8%;
+    display: flex;
+    justify-content: center;
+}
+
+.about-card {
+    background-color: #F8F7FD;
+    padding: 40px;
+    border-radius: 30px;
+    width: 100%;
+    max-width: 1100px;
+}
+
+.about-card h2 {
+    font-size: 28px;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    font-family: sans-serif;
+}
+
+.about-card p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #444;
+    text-align: justify;
+}
+.event-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    width: 100%;
+}
+
+.event-image {
+    flex: 1;
+}
+
+.event-image img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 30px;
+}
+
+.event-text {
+    flex: 1;
+}
+
+.event-text h1 {
+    font-size: 42px;
+    color: #1a1a1a;
+    line-height: 1.2;
+}
+
+.event-text h1 span {
+    color: var(--purple);
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.btn-primary {
+    background-color: var(--purple);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--purple);
+    border: 1px solid #ddd;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+/* Workshops page == Malak work */
+
+body{
+margin:0;
+font-family:Arial;
+background:#f3f3f3;
+}
+/* HERO */
+
+.hero{
+background:url("hero.png");
+background-size:cover;
+background-position:center;
+height:500px;
+position:relative;
+}
+
+.overlay{
+height:100%;
+background:rgba(0,0,0,.35);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+color:white;
+text-align:center;
+position:relative;
+}
+
+.logo{
+position:absolute;
+top:20px;
+left:25px;
+font-size:30px;
+font-weight:bold;
+}
+
+.hero-btn{
+position:absolute;
+top:18px;
+right:25px;
+background:#472480;
+color:white;
+text-decoration:none;
+padding:12px 28px;
+border-radius:30px;
+}
+
+.overlay h1{
+font-size:60px;
+margin-bottom:15px;
+}
+
+.overlay p{
+max-width:700px;
+line-height:1.7;
+font-size:20px;
+}
+/* SECTION TITLE */
+
+.title{
+margin:30px 45px;
+font-size:34px;
+}
+/* CARDS */
+
+.cards{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+width:92%;
+margin:auto;
+padding-bottom:50px;
+}
+
+.card{
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 4px 10px rgba(0,0,0,.12);
+}
+
+.card img{
+width:100%;
+height:145px;
+object-fit:cover;
+}
+
+.card h3{
+padding:12px 15px 0;
+margin:0;
+font-size:24px;
+}
+
+.card p{
+padding-left:15px;
+margin-top:8px;
+color:#999;
+font-size:15px;
+}
+/* TIME + BUTTON */
+
+.bottom-row{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px;
+}
+
+.time{
+display:flex;
+align-items:center;
+gap:6px;
+font-size:14px;
+color:#666;
+}
+
+.time i{
+font-size:13px;
+color:#888;
+}
+
+.bottom-row button{
+background:#472480;
+border:none;
+color:white;
+padding:8px 20px;
+border-radius:18px;
+cursor:pointer;
+}
+/* FOOTER */
+
+footer{
+background:#472480;
+color:white;
+text-align:center;
+padding:18px;
+font-size:22px;
+}
+
+
+/*Profile-page Hanaaaa/*
+/* colors  */
+:root {
+    --primary-purple: #4b2c82;
+    --light-bg: #f8f9fa;
+    --border-color: #e0e0e0;
+    --text-color: #281107;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-bg);
+    margin: 0;
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* header */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: none;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+.main-header h1 { color: var(--primary-purple); font-size: 24px; }
+
+/* info  */
+.info-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+}
+
+.inputs-grid {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+input {
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    background: #f1f1f1;
+    width: 250px;
+    color: #bbb6b6; 
+    opacity: 0.7;
+}
+
+.edit-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/* workshop  */
+.workshop-item {
+    background: #fff;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-color);
+}
+
+.workshop-img img { 
+    width: 196px;       
+    height: 146px;     
+    object-fit: cover; 
+    border-radius: 12px; 
+    margin-right: 15px;
+ }
+
+.workshop-details { flex-grow: 1; }
+
+.workshop-details h3 { margin: 0; font-size: 18px; }
+
+.workshop-details p { margin: 5px 0; color: #666; font-size: 14px; }
+
+/* Buttons */
+.workshop-actions { display: flex; gap: 10px; }
+
+.details-btn {
+    background: var(--primary-purple);
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 25px;
+}
+
+.cancel-btn {
+    background: transparent;
+    color: #dc3545;
+    border: 1px solid #dc3545;
+    padding: 8px 15px;
+    border-radius: 15px;
+}
+.footer {
+  
+    background-color: var(--primary-purple); 
+    width: 100%; 
+    padding: 6px 0; 
+    text-align: center;
+    margin-top: 40px; 
+}
+
+.footer p {
+    margin: 0;
+    color: #fff; 
+    font-size: 14px;
+    font-weight: 400; 
+}
