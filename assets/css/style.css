@@ -56,7 +56,11 @@ body{
 }
 /* Login Page == Mennagamal work */
 
-/* Login Page == Mennagamal work */
+.navbar .logo h2 {
+    color: #472480;
+    font-size: 22px;
+    font-weight: bold;
+}
 
 .menna-login-container {
     display: flex;
@@ -142,6 +146,109 @@ body{
 }
 
 /* Register Page == Mennagamal work */
+
+.menna-error {
+    display: block;
+    width: 100%;
+    max-width: 380px;
+    color: #c0392b;
+    font-size: 13px;
+    margin: -12px 0 10px 18px;
+    text-align: left;
+}
+
+.menna-input-field.invalid {
+    border-color: #c0392b;
+}
+
+.menna-hint {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    width: 100%;
+    max-width: 380px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.menna-hint-item {
+    flex: 1;
+    text-align: center;
+}
+
+.menna-hint-bar {
+    height: 4px;
+    border-radius: 2px;
+    background: #e0d9f0;
+    margin-bottom: 5px;
+}
+
+.menna-hint-item span {
+    font-size: 11px;
+    color: #bbb;
+}
+
+.menna-file-upload {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 380px;
+    box-sizing: border-box;
+    border: 1.5px dashed #c8bce8;
+    border-radius: 16px;
+    padding: 14px 20px;
+    background: #f9f8ff;
+    cursor: pointer;
+    margin-bottom: 8px;
+}
+
+.menna-file-upload:hover { border-color: #472480; }
+
+.menna-file-upload.invalid { border-color: #c0392b; }
+
+.menna-file-upload .title {
+    margin: 0 0 3px 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #472480;
+}
+
+.menna-file-upload .subtitle {
+    margin: 0;
+    font-size: 12px;
+    color: #aaa;
+}
+
+.menna-file-browse {
+    margin-left: auto;
+    font-size: 12px;
+    background: #472480;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.menna-file-success {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 380px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    background: #eef9f0;
+    border: 1px solid #a8ddb5;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: #2e7d32;
+}
+
+.menna-file-success span { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.menna-file-clear { margin-left: auto; cursor: pointer; color: #999; flex-shrink: 0; }
 
 .menna-reg-container {
     display: flex;
@@ -269,6 +376,7 @@ body{
     border-radius: 25px;
     cursor: pointer;
 }
+
 
 /* Workshops page == Malak work */
 
@@ -653,4 +761,3 @@ text-align:center;
 padding:18px;
 font-size:22px;
 }
-
