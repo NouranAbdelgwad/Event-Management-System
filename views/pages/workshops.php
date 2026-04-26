@@ -188,11 +188,14 @@
                         <div class="card-body">
                             <h3><?php echo $row['name']; ?></h3>
                             <div class="instructor-name">
-                                <?php echo "name" ?>
+                                <?php echo $row['speaker_name']; ?>
                             </div>
                             <div class="time">
-                                <i class="fa-regular fa-clock"></i>
-                                <?php echo $row['start_time']; ?> - <?php echo $row['end_time']; ?>
+                               <i class="fa-regular fa-clock"></i>
+
+                            <?php echo date("g:i A", strtotime($row['start_time'])); ?>
+                             -
+                            <?php echo date("g:i A", strtotime($row['end_time'])); ?>
                             </div>
 
                             <div class="bottom-row">
