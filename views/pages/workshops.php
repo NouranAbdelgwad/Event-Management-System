@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +16,7 @@
         }
 
         .hero-section {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../../assets/images/hero.png');
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../../assets/images/hero.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -88,7 +89,7 @@
             background: white;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
             border: 1px solid #eee;
             display: flex;
             flex-direction: column;
@@ -155,8 +156,9 @@
         }
     </style>
 </head>
+
 <body>
-       <div class="hero-section">
+    <div class="hero-section">
         <div class="navbar">
             <div class="logo">AI EVENT.</div>
             <button class="join-event-btn">Join Event</button>
@@ -169,96 +171,43 @@
 
     <div class="workshops-container">
         <h2 class="section-title">Workshops</h2>
-        
+
         <div class="workshops-grid">
-            <div class="workshop-card">
-                <img src="../../assets/images/hero.png" alt="Workshop">
-                <div class="card-body">
-                    <h3>Introduction to AI</h3>
-                    <div class="instructor-name">Eng. Sarah Ahmed</div>
-                    <div class="time"><i class="fa-regular fa-clock"></i> 3:00 PM - 5:00 PM</div>
-                    <div class="bottom-row"><button>Join</button></div>
-                </div>
-            </div>
+            <?php
+            // take this copy and put it in all pages that need to show workshops
+            include "../../controllers/WorkshopsController.php";
+            if (mysqli_num_rows($results) > 0): ?>
+            <?php while ($row = mysqli_fetch_assoc($results)): ?>
 
-            <div class="workshop-card">
-                <img src="assets/images/ai2.png" alt="Workshop">
-                <div class="card-body">
-                    <h3>AI for Designers</h3>
-                    <div class="instructor-name">Eng. Zeyad Abdelazeem</div>
-                    <div class="time"><i class="fa-regular fa-clock"></i> 5:00 PM - 7:00 PM</div>
-                    <div class="bottom-row"><button>Join</button></div>
-                </div>
-            </div>
+                    <div class="workshop-card">
+                        <?php
+                        $imageData = base64_encode($row['img']);
+                        $imageType = "image/jpeg"; 
+                        echo '<img src="data:' . $imageType . ';base64,' . $imageData . '" alt="Workshop">';
+                        ?>
+                        <div class="card-body">
+                            <h3><?php echo $row['name']; ?></h3>
+                            <div class="instructor-name">
+                                <?php echo "name" ?>
+                            </div>
+                            <div class="time">
+                                <i class="fa-regular fa-clock"></i>
+                                <?php echo $row['start_time']; ?> - <?php echo $row['end_time']; ?>
+                            </div>
 
-            <div class="workshop-card">
-                <img src="assets/images/ai3.png" alt="Workshop">
-                <div class="card-body">
-                    <h3>Data & AI Fundamentals</h3>
-                    <div class="instructor-name">Eng. Ashraf Emad</div>
-                    <div class="time"><i class="fa-regular fa-clock"></i> 7:00 PM - 9:00 PM</div>
-                    <div class="bottom-row"><button>Join</button></div>
-                </div>
-            </div>
+                            <div class="bottom-row">
+                                <button onclick="location.href='workshops_details.php?id=<?php echo $row['id']; ?>'">
+                                    Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="workshop-card">
-                <img src="assets/images/ai3.png" alt="Workshop">
-                <div class="card-body">
-                    <h3>Data & AI Fundamentals</h3>
-                    <div class="instructor-name">Eng. Ashraf Emad</div>
-                    <div class="time"><i class="fa-regular fa-clock"></i> 7:00 PM - 9:00 PM</div>
-                    <div class="bottom-row"><button>Join</button></div>
-                </div>
-            </div>
-
-            <div class="workshop-card">
-                <img src="assets/images/ai1.png" alt="Workshop">
-                <div class="card-body">
-                    <h3>Introduction to AI</h3>
-                    <div class="instructor-name">Eng. Sarah Ahmed</div>
-                    <div class="time"><i class="fa-regular fa-clock"></i> 3:00 PM - 5:00 PM</div>
-                    <div class="bottom-row"><button>Join</button></div>
-                </div>
-            </div>
-
-            <div class="workshop-card">
-                <img src="assets/images/ai2.png" alt="Workshop">
-                <div class="card-body">
-                    <h3>AI for Designers</h3>
-                    <div class="instructor-name">Eng. Zeyad Abdelazeem</div>
-                    <div class="time"><i class="fa-regular fa-clock"></i> 5:00 PM - 7:00 PM</div>
-                    <div class="bottom-row"><button>Join</button></div>
-                </div>
-            </div>
-
-            <div class="workshop-card">
-                <img src="assets/images/ai2.png" alt="Workshop">
-                <div class="card-body">
-                    <h3>AI for Designers</h3>
-                    <div class="instructor-name">Eng. Zeyad Abdelazeem</div>
-                    <div class="time"><i class="fa-regular fa-clock"></i> 5:00 PM - 7:00 PM</div>
-                    <div class="bottom-row"><button>Join</button></div>
-                </div>
-            </div>
-                <div class="workshop-card">
-                <img src="assets/images/ai3.png" alt="Workshop">
-                <div class="card-body">
-                    <h3>Data & AI Fundamentals</h3>
-                    <div class="instructor-name">Eng. Ashraf Emad</div>
-                    <div class="time"><i class="fa-regular fa-clock"></i> 7:00 PM - 9:00 PM</div>
-                    <div class="bottom-row"><button>Join</button></div>
-                </div>
-            </div>
-
-            <div class="workshop-card">
-                <img src="assets/images/ai1.png" alt="Workshop">
-                <div class="card-body">
-                    <h3>Introduction to AI</h3>
-                    <div class="instructor-name">Eng. Sarah Ahmed</div>
-                    <div class="time"><i class="fa-regular fa-clock"></i> 3:00 PM - 5:00 PM</div>
-                    <div class="bottom-row"><button>Join</button></div>
-                </div>
-            </div>
+                <?php endwhile; ?>
+            <?php else: ?>
+                <p>No workshops found.</p>
+            <?php endif;
+            ?>
         </div>
     </div>
 
@@ -267,4 +216,5 @@
     </footer>
 
 </body>
+
 </html>
