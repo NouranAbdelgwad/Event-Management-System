@@ -160,7 +160,7 @@
 <body>
     <div class="hero-section">
         <div class="navbar">
-            <div class="logo">AI EVENT.</div>
+            <div class="worksops-page-logo">AI EVENT.</div>
             <button class="join-event-btn">Join Event</button>
         </div>
         <div class="hero-content">

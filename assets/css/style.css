@@ -5,6 +5,9 @@
 body{
     margin: 0px;
     padding: 0px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-bg);
+    color: var(--text-color);
 }
 
 .navbar{
@@ -18,7 +21,7 @@ body{
 
 }
 
-.logo{
+.nav-logo{
     color: var(--purple);
 }
 
@@ -269,11 +272,7 @@ body{
 
 /* Workshops page == Malak work */
 
-body{
-margin:0;
-font-family:Arial;
-background:#f3f3f3;
-}
+
 /* HERO */
 
 .hero{
@@ -296,13 +295,7 @@ text-align:center;
 position:relative;
 }
 
-.logo{
-position:absolute;
-top:20px;
-left:25px;
-font-size:30px;
-font-weight:bold;
-}
+
 
 .hero-btn{
 position:absolute;
@@ -416,12 +409,7 @@ font-size:22px;
     --text-color: #281107;
 }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--light-bg);
-    margin: 0;
-    color: var(--text-color);
-}
+
 
 .container {
     max-width: 900px;
@@ -537,11 +525,7 @@ input {
 
 /* workshops== malak */
 
-body{
-margin:0;
-font-family:Arial;
-background:#f3f3f3;
-}
+
 /* HERO */
 .hero{
 background:url("hero.png");

@@ -1,7 +1,7 @@
 <div class="navbar">
-    <h1 class="logo" >AI EVENT.</h1>
+    <h1 class="nav-logo" >AI EVENT.</h1>
     <?php if($navType == "home"):?>
-        <a href="register.php">
+        <a href="views/pages/register.php">
         <button class="navbar-btn" >Join Event</button>
     </a>
     <?php elseif($navType == "profile-icon"): ?>
