@@ -1,19 +1,21 @@
-<?php 
+<?php
 session_start();
 $role = $_SESSION['user']['role'];
-$nav = ['admin'=>'admin-dashboard','user'=>'home'];
- ?>
+$nav = ['admin' => 'admin-dashboard', 'user' => 'home'];
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Management</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
+
 <body>
-    <?php 
-    
+    <?php
+
     $navType = "$nav[$role]";
     include("views/components/navbar.php");
     ?>
@@ -57,10 +59,19 @@ $nav = ['admin'=>'admin-dashboard','user'=>'home'];
                 </p>
             </div>
         </section>
-
     </section>
 
-
-    <?php include("views/components/footer.php");?>
+    <div class="workshops-section" style="width: 80%;margin: auto;">
+        <div class="available workshops" style="display: flex; justify-content: space-between; align-items:center;">
+            <h1>Available Workshops</h1>
+            <a href="views/pages/workshops.php">see more</a>
+        </div>
+        <?php 
+        include("./config/db_connection.php");
+        include("./controllers/HomeController.php");
+        include("views/components/workshop_card.php"); ?>
+    </div>
+    <?php include("views/components/footer.php"); ?>
 </body>
+
 </html>

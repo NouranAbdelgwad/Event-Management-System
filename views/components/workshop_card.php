@@ -1,4 +1,3 @@
-<?php include "../../controllers/HomeController.php"; ?>
 
 <style>
 .workshops-grid{
@@ -10,7 +9,6 @@ gap:25px;
 .workshop-card{
 background:#fff;
 border-radius:15px;
-overflow:hidden;
 box-shadow:0 4px 12px rgba(0,0,0,.08);
 }
 
@@ -37,7 +35,6 @@ border-radius:18px;
 }
 </style>
 
-<div class="workshops-container">
 
 
 <div class="workshops-grid">
@@ -66,7 +63,7 @@ echo '<img src="data:image/jpeg;base64,'.$imageData.'" alt="Workshop">';
 </div>
 
 <div class="bottom-row">
-<button onclick="location.href='../pages/workshops_details.php?id=<?php echo $row['id']; ?>'">
+<button onclick="location.href='views/pages/workshops_details.php?id=<?php echo $row['id']; ?>'">
 Details
 </button>
 </div>
@@ -76,5 +73,4 @@ Details
 
 <?php endwhile; ?>
 
-</div>
 </div>

@@ -1,5 +1,4 @@
 <?php
-include "../../config/db_connection.php";
 
 $sql="
 SELECT workshop.*, speaker.name as speaker_name
