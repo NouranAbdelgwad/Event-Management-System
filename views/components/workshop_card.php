@@ -1,15 +1,43 @@
 <?php include "../../controllers/HomeController.php"; ?>
 
+<style>
+.workshops-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+}
+
+.workshop-card{
+background:#fff;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+.workshop-card img{
+width:100%;
+height:180px;
+object-fit:cover;
+}
+
+.card-body{
+padding:18px;
+}
+
+.bottom-row{
+margin-top:15px;
+}
+
+.bottom-row button{
+background:#472480;
+color:white;
+border:none;
+padding:8px 20px;
+border-radius:18px;
+}
+</style>
+
 <div class="workshops-container">
-
-<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:30px;">
-<h2>Workshops</h2>
-
-<a href="../pages/workshops.php"
-style="text-decoration:none;color:#472480;font-weight:bold;">
-See All
-</a>
-</div>
 
 
 <div class="workshops-grid">
