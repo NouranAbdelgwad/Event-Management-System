@@ -6,6 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Management</title>
     <link rel="stylesheet" href="../../assets/css/style.css">
+<style>
+.workshops-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+padding:30px 60px;
+}
+
+.workshop-card{
+background:#fff;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 4px 15px rgba(0,0,0,.08);
+border:1px solid #eee;
+}
+
+.workshop-card img{
+width:100%;
+height:180px;
+object-fit:cover;
+}
+
+.card-body{
+padding:20px;
+}
+
+.bottom-row{
+display:flex;
+justify-content:flex-end;
+}
+</style>
+    
 </head>
 
 <body>

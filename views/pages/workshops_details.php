@@ -194,39 +194,7 @@
                 <h4>Other Workshops</h4>
                 <a href="#" style="color: #4B2A85; font-weight: bold; text-decoration: none; font-size: 0.8rem;">See All</a>
             </div>
-            <div class="grid">
-                <div class="card">
-                    <img src="assets/images/ai1.png">
-                    <div class="card-info">
-                        <h5>Introduction to AI</h5>
-                        <p>Eng. Sarah Ahmed</p>
-                    </div>
-                    <div class="card-footer">
-                        <span style="font-size: 0.75rem; font-weight: bold;">🕒 3:00 PM - 5:00 PM</span>
-                        <button class="btn-card">Join</button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="assets/images/ai2.png">
-                    <div class="card-info">
-                        <h5>AI for Designers</h5>
-                        <p>Eng. Zeyad Abdelazeem</p>
-                    </div>
-                    <div class="card-footer">
-                        <span style="font-size: 0.75rem; font-weight: bold;">🕒 5:00 PM - 7:00 PM</span>
-                        <button class="btn-card">Join</button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="assets/images/ai3.png">
-                    <div class="card-info">
-                        <h5>Data & AI Fundamentals</h5>
-                        <p>Eng. Ashraf Emad</p>
-                    </div>
-                    <div class="card-footer">
-                        <span style="font-size: 0.75rem; font-weight: bold;">🕒 7:00 PM - 9:00 PM</span>
-                        <button class="btn-card">Join</button>
-                    </div>
+           <?php include "../components/workshop_card.php"; ?>
                 </div>
             </div>
         </div>
