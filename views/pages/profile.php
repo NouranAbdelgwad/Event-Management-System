@@ -17,9 +17,9 @@
 
         <main class="profile-section">
             <?php
-            include("../../config/db_connection.php");
+            // include("./config/db_connection.php");
             include("../../controllers/ProfileController.php");
-            $user_id = 1;
+            $user_id = $_SESSION['user_id'];
             $sql = "SELECT * FROM user WHERE id = $user_id";
             $result = mysqli_query($connection, $sql);
             $user = mysqli_fetch_assoc($result);

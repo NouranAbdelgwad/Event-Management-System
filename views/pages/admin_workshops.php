@@ -11,6 +11,8 @@ if ($conn->connect_error) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Event - Workshops</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+
 
 <style>
 :root {
@@ -145,19 +147,16 @@ body {
 
 <body>
 
-<div class="navbar">
-    <h2 class="logo">AI EVENT.</h2>
-    <div class="nav-links">
-        <span class="active">Workshops</span>
-        <span>Visitors</span>
-    </div>
-</div>
+    <?php 
+    $navType = "admin-dashboard";
+    include("../components/navbar.php"); 
+    ?>
 
 <div class="container">
 
     <div class="header-section">
         <h2>All Workshops</h2>
-        <button class="create-btn">Create Workshop</button>
+        <a class="create-btn" href="create_Workshop.php">Create Workshop</a>
     </div>
 
     <table class="admin-table">

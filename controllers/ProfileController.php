@@ -1,12 +1,12 @@
 <?php
-session_start();
 include "../../config/db_connection.php";
+session_start();
 
 if (isset($_POST['update_profile'])) {
     $full_name = mysqli_real_escape_string($connection, $_POST['full_name']);
     $email = mysqli_real_escape_string($connection, $_POST['email']);
     
-    $user_id = $_SESSION["user"]["id"]; 
+    $user_id = $_SESSION['user_id']; 
 
     $sql = "UPDATE user SET name = '$full_name', email = '$email' WHERE id = $user_id";
 

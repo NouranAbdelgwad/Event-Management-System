@@ -1,5 +1,7 @@
 <div class="navbar">
+    <a href="home.php">
     <h1 class="nav-logo" >AI EVENT.</h1>
+    </a>
     <?php if($navType == "home"):?>
         <a href="register.php">
         <button class="navbar-btn" >Join Event</button>
