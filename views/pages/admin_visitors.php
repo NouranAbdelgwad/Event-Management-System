@@ -46,7 +46,7 @@
 </head>
 <body>
     <?php 
-    $navType = "admin";
+    $navType = "admin-dashboard";
     include("../components/navbar.php"); 
     ?>
 
