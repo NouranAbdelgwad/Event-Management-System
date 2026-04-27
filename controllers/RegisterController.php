@@ -10,6 +10,7 @@ class RegisterController {
 
     public function register($post, $files) {
         $name     = trim($post['username'] ?? '');
+        
         $email    = trim($post['email']    ?? '');
         $password = $post['password']      ?? '';
         $file     = $files['user_id_img']  ?? null;
@@ -59,8 +60,8 @@ class RegisterController {
         move_uploaded_file($file['tmp_name'], $uploadDir . $filename);
         $filePath = 'assets/uploads/ids/' . $filename;
 
-        $stmt = mysqli_prepare($this->conn, "INSERT INTO user (name, email, password, user_id_img) VALUES (?, ?, ?, ?)");
-        mysqli_stmt_bind_param($stmt, 'ssss', $name, $email, $hashed, $filePath);
+        $stmt = mysqli_prepare($this->conn, "INSERT INTO user (name, email, password ) VALUES ( ?, ?, ?)");
+        mysqli_stmt_bind_param($stmt, 'sss', $name, $email, $hashed );
         mysqli_stmt_execute($stmt);
         $userId = mysqli_insert_id($this->conn);
         mysqli_stmt_close($stmt);

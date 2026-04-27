@@ -1,3 +1,8 @@
+<?php 
+session_start();
+$role = $_SESSION['user']['role'];
+$nav = ['admin'=>'admin-dashboard','user'=>'home'];
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +13,8 @@
 </head>
 <body>
     <?php 
-    $navType = "home";
+    
+    $navType = "$nav[$role]";
     include("views/components/navbar.php");
     ?>
 
