@@ -11,10 +11,9 @@
 <body>
 
     <div class="container">
-        <header class="main-header">
-            <h1>AI EVENT.</h1>
-            <div class="user-icon">👤</div>
-        </header>
+        <?php 
+        $navType = "profile-icon";
+        include "../components/navbar.php" ?>
 
         <main class="profile-section">
             <?php

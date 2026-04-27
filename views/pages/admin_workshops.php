@@ -1,3 +1,10 @@
+<?php
+$conn = new mysqli("localhost", "root", "", "event_management");
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +24,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Navbar */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -41,19 +47,16 @@ body {
     font-weight: bold;
 }
 
-/* Container */
 .container {
     padding: 30px 40px;
 }
 
-/* Header */
 .header-section {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-/* Button */
 .create-btn {
     border: 1px solid var(--purple);
     color: var(--purple);
@@ -63,7 +66,6 @@ body {
     cursor: pointer;
 }
 
-/* Table */
 .admin-table {
     width: 100%;
     border-collapse: separate;
@@ -82,13 +84,11 @@ body {
     padding: 15px;
 }
 
-/* Row style */
 .admin-table tbody tr {
     background: white;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-/* Image */
 .workshop-img {
     width: 80px;
     height: 60px;
@@ -96,22 +96,20 @@ body {
     object-fit: cover;
 }
 
-/* Speaker */
 .speaker {
     color: var(--purple);
     font-weight: bold;
 }
 
-/* Time Style - تعديل اللون والسمك */
 .time-style {
     color: var(--purple);
-    font-weight: normal; /* جعل الخط رفيع مثل عنوان الورشة */
+    font-weight: normal;
 }
 
-/* Buttons */
 .actions {
     display: flex;
     gap: 10px;
+    align-items: center;
 }
 
 .btn-edit {
@@ -132,7 +130,6 @@ body {
     cursor: pointer;
 }
 
-/* Footer */
 .footer {
     background: var(--purple);
     color: white;
@@ -174,62 +171,133 @@ body {
                 <th>Action</th>
             </tr>
         </thead>
+
         <tbody>
-            <tr>
+
+            <!-- ROW 1 -->
+            <!-- <tr>
                 <td>1</td>
                 <td><img src="assets/images/ai2.png" class="workshop-img"></td>
                 <td>AI for Designers</td>
                 <td class="speaker">Sarah Ahmed</td>
                 <td class="time-style">5:00 PM - 7:00 PM</td>
                 <td class="actions">
+
                     <button class="btn-edit">Edit</button>
-                    <button class="btn-delete">Delete</button>
+
+                    <form method="POST" action="../../controllers/AdminWorkshopsController.php">
+                        <input type="hidden" name="id" value="1">
+                        <button type="submit" name="delete" class="btn-delete">Delete</button>
+                    </form>
+
                 </td>
-            </tr>
-            <tr>
+            </tr> -->
+
+
+
+
+
+            <tbody>
+
+<?php
+$result = $conn->query("SELECT * FROM workshop");
+
+while($row = $result->fetch_assoc()) {
+?>
+
+<tr>
+    <td><?= $row['id'] ?></td>
+    <td><?= $row['img'] ?></td>
+
+  <td><?= $row['name'] ?></td>
+<td><?= $row['topic'] ?></td>
+
+<td>
+    <?= $row['start_time'] ?> - <?= $row['end_time'] ?>
+</td>
+
+    <td class="actions">
+ <button class="btn-edit"><a href="edit_workshop.php?id=<?= $row['id'] ?>">Edit</a></button>
+        <form method="POST" action="../../controllers/AdminWorkshopsController.php">
+            <input type="hidden" name="id" value="<?= $row['id'] ?>">
+            <button type="submit" name="delete" class="btn-delete">Delete</button>
+        </form>
+
+    </td>
+</tr>
+
+<?php } ?>
+
+</tbody>
+
+
+
+
+
+            <!-- ROW 2 -->
+            <!-- <tr>
                 <td>2</td>
                 <td><img src="assets/images/ai2.png" class="workshop-img"></td>
                 <td>AI For Designers</td>
                 <td class="speaker">Sarah Ahmed</td>
                 <td class="time-style">5:00 PM - 7:00 PM</td>
                 <td class="actions">
+
                     <button class="btn-edit">Edit</button>
-                    <button class="btn-delete">Delete</button>
+
+                    <form method="POST" action="../../controllers/AdminWorkshopsController.php">
+                        <input type="hidden" name="id" value="2">
+                        <button type="submit" name="delete" class="btn-delete">Delete</button>
+                    </form>
+
                 </td>
-            </tr>
-            <tr>
+            </tr> -->
+
+
+
+
+
+
+            
+
+            <!-- ROW 3 -->
+            <!-- <tr>
                 <td>3</td>
                 <td><img src="assets/images/ai2.png" class="workshop-img"></td>
                 <td>AI For Designers</td>
                 <td class="speaker">Sarah Ahmed</td>
                 <td class="time-style">5:00 PM - 7:00 PM</td>
                 <td class="actions">
+
                     <button class="btn-edit">Edit</button>
-                    <button class="btn-delete">Delete</button>
+
+                    <form method="POST" action="../../controllers/AdminWorkshopsController.php">
+                        <input type="hidden" name="id" value="3">
+                        <button type="submit" name="delete" class="btn-delete">Delete</button>
+                    </form>
+
                 </td>
-            </tr>
-            <tr>
+            </tr> -->
+
+            <!-- ROW 4 -->
+            <!-- <tr>
                 <td>4</td>
                 <td><img src="assets/images/ai2.png" class="workshop-img"></td>
                 <td>AI For Designers</td>
                 <td class="speaker">Sarah Ahmed</td>
                 <td class="time-style">5:00 PM - 7:00 PM</td>
                 <td class="actions">
+
                     <button class="btn-edit">Edit</button>
-                    <button class="btn-delete">Delete</button>
+
+                    <form method="POST" action="../../controllers/AdminWorkshopsController.php">
+                        <input type="hidden" name="id" value="4">
+                        <button type="submit" name="delete" class="btn-delete">Delete</button>
+                    </form>
+
                 </td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td><img src="assets/images/ai2.png" class="workshop-img"></td>
-                <td>AI For Designers</td>
-                <td class="speaker">Sarah Ahmed</td>
-                <td class="time-style">5:00 PM - 7:00 PM</td>
-                <td class="actions">
-                    <button class="btn-edit">Edit</button>
-                    <button class="btn-delete">Delete</button>
-                </td>
-            </tr>
+            </tr> -->
+
         </tbody>
     </table>
 

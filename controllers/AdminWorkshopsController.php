@@ -1,32 +1,49 @@
 <?php
-require_once "../../config/db_connection.php";
 
-if (isset($_POST['create_workshop'])) {
-    $topic = mysqli_real_escape_string($conn, $_POST['title']); 
-    $disc = mysqli_real_escape_string($conn, $_POST['description']); 
-    $start_time = $_POST['date'] . ' ' . $_POST['time']; 
-    
-    $img = "default.jpg"; 
-    if (!empty($_FILES['image']['name'])) {
-        $img = time() . "_" . $_FILES['image']['name'];
-        $target_dir = "../../assets/images/workshops/";
-        if (!is_dir($target_dir)) { 
-            mkdir($target_dir, 0777, true); 
-        }
-        move_uploaded_file($_FILES['image']['tmp_name'], $target_dir . $img);
-    }
+$conn = new mysqli("localhost", "root", "", "event_management");
 
-    mysqli_query($conn, "INSERT IGNORE INTO event (id, name) VALUES (1, 'General Event')");
-    mysqli_query($conn, "INSERT IGNORE INTO speaker (id, name) VALUES (1, 'General Speaker')");
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-    $query = "INSERT INTO workshop (topic, disc, img, start_time, event_id, speaker_id) 
-              VALUES ('$topic', '$disc', '$img', '$start_time', 1, 1)";
+// DELETE
+if (isset($_POST['delete']) && isset($_POST['id'])) {
 
-    if (mysqli_query($conn, $query)) {
+    $id = intval($_POST['id']);
+
+    $sql = "DELETE FROM workshop WHERE id = ?";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $id);
+
+    if ($stmt->execute()) {
         header("Location: ../views/pages/admin_workshops.php");
         exit();
     } else {
-        die("Database Error: " . mysqli_error($conn));
+        echo "Delete Error: " . $stmt->error;
     }
 }
+
+
+// UPDATE
+if (isset($_POST['update']) && isset($_POST['id'])) {
+
+    $id = intval($_POST['id']);
+    $title = $_POST['title'];
+    $speaker = $_POST['speaker'];
+    $time = $_POST['time'];
+
+    $sql = "UPDATE workshop SET title=?, speaker=?, time=? WHERE id=?";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sssi", $title, $speaker, $time, $id);
+
+    if ($stmt->execute()) {
+        header("Location: ../views/pages/admin_workshops.php");
+        exit();
+    } else {
+        echo "Update Error: " . $stmt->error;
+    }
+}
+
 ?>
