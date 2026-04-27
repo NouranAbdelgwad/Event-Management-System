@@ -170,7 +170,7 @@
             <div class="details">
                 <h3><?php echo $data['name'] . " - " . $data['topic']; ?></h3>
 
-                <p class="eng">Speaker ID: <?php echo $data['speaker_id']; ?></p>
+                <p class="eng"> Eng. <?php echo $data['speaker_name']; ?></p>
 
                 <p class="desc"><?php echo $data['disc']; ?></p>
 
