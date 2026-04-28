@@ -1,6 +1,5 @@
 <?php
 include "../../config/db_connection.php";
-session_start();
 
 // read workshop
 $id = $_GET["id"];

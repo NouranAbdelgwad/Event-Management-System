@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['user'])) {
-    header('Location: ../../index.php');
+    header('Location: home.php');
 
     exit();
 }  
@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = (new loginController($connection))->login($_POST);
  
     if ($result['success']) {
-        header('Location: ../../index.php');
+        header('Location: home.php');
         exit;
     }
 

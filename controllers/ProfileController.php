@@ -1,5 +1,7 @@
 <?php
-include "../../config/db_connection.php";
+@include "../config/db_connection.php";
+@include "../../config/db_connection.php";
+
 session_start();
 
 if (isset($_POST['update_profile'])) {

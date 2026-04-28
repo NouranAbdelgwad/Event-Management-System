@@ -155,7 +155,14 @@
 
 <body>
     <?php
-    $navType = "home";
+    session_start();
+    if ($_SESSION["user"]["role"] == "user") {
+        $navType = "profile-icon";
+    } elseif ($_SESSION["user"]["role"] == "admin") {
+        $navType = "admin-dashboard";
+    } else {
+        $navType = "home";
+    }
     include("../components/navbar.php");
     include "../../controllers/WorkshopsDetailsController.php";
     ?>

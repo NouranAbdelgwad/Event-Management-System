@@ -3,7 +3,6 @@ $conn = new mysqli("localhost", "root", "", "event_management");
 
 $id = $_GET['id'];
 
-// نجيب البيانات
 $result = $conn->query("
 SELECT workshop.*, speaker.name AS speaker_name
 FROM workshop
@@ -12,20 +11,27 @@ WHERE workshop.id = $id
 ");
 $data = $result->fetch_assoc();
 
-// لما ندوس update
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
     $title = $_POST['title'];
     $date = $_POST['date'];
     $description = $_POST['description'];
+    $speaker_name = $_POST['speaker']; // Get the speaker name from the form
+    $speaker_id = $data['speaker_id']; // Use the speaker_id from the initial SELECT query
 
-    $sql = "UPDATE workshop SET 
+    // 1. Update the Speaker Table
+    if ($speaker_id) {
+        $sql_speaker = "UPDATE speaker SET name='$speaker_name' WHERE id=$speaker_id";
+        $conn->query($sql_speaker);
+    }
+
+    // 2. Update the Workshop Table
+    $sql_workshop = "UPDATE workshop SET 
             name='$title',
             start_time='$date',
             disc='$description'
             WHERE id=$id";
 
-    if ($conn->query($sql)) {
+    if ($conn->query($sql_workshop)) {
         header("Location: admin_workshops.php");
         exit();
     } else {

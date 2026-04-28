@@ -35,6 +35,9 @@
                     </div>
                     <button class="edit-btn" type="submit" name="update_profile">Update Profile</button>
                 </form>
+                <form action="../../controllers/logoutController.php" method="post">
+                    <button class="edit-btn" type="submit">Log out</button>
+                </form>
             </section>
 
             <section class="workshops-list">

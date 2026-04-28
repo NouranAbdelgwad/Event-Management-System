@@ -199,17 +199,26 @@ body {
             <tbody>
 
 <?php
-$result = $conn->query("SELECT * FROM workshop");
+$result = $conn->query("SELECT workshop.*, speaker.name as speaker_name
+FROM workshop
+JOIN speaker
+ON workshop.speaker_id=speaker.id");
 
 while($row = $result->fetch_assoc()) {
 ?>
 
 <tr>
     <td><?= $row['id'] ?></td>
-    <td><?= $row['img'] ?></td>
+    <td>
+        <?php
+            $imageData = base64_encode($row['img']);
+            $imageType = "image/jpeg";
+            echo '<img src="data:' . $imageType . ';base64,' . $imageData . '" class="main-img" alt="Workshop">';
+            ?>
+    </td>
 
   <td><?= $row['name'] ?></td>
-<td><?= $row['topic'] ?></td>
+<td><?= $row['speaker_name'] ?></td>
 
 <td>
     <?= $row['start_time'] ?> - <?= $row['end_time'] ?>

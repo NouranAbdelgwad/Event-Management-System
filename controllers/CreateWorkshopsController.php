@@ -1,32 +1,34 @@
 <?php
-require_once "../config/db_connection.php";
+require_once __DIR__ . "/../config/db_connection.php";
 
 if (isset($_POST['create_workshop'])) {
-    $topic = mysqli_real_escape_string($connection, $_POST['title']); 
-    $disc = mysqli_real_escape_string($connection, $_POST['description']); 
+    $topic = $_POST['title'];
+    $disc  = $_POST['description']; 
     $start_time = $_POST['date'] . ' ' . $_POST['time']; 
-    
-    $img = "default.jpg"; 
-    if (!empty($_FILES['image']['name'])) {
-        $img = time() . "_" . $_FILES['image']['name'];
-        $target_dir = "../../assets/images/workshops/";
-        if (!is_dir($target_dir)) { 
-            mkdir($target_dir, 0777, true); 
-        }
-        move_uploaded_file($_FILES['image']['tmp_name'], $target_dir . $img);
+
+    // --- NEW BINARY IMAGE LOGIC ---
+    $imgData = null;
+    if (!empty($_FILES['image']['tmp_name'])) {
+        // Read the file into a variable
+        $imgData = file_get_contents($_FILES['image']['tmp_name']);
     }
 
-    mysqli_query($connection, "INSERT IGNORE INTO event (id, name) VALUES (1, 'General Event')");
-    mysqli_query($connection, "INSERT IGNORE INTO speaker (id, name) VALUES (1, 'General Speaker')");
+    // Use Prepared Statements (Required for Binary Data)
+    $query = "INSERT INTO workshop (name, disc, img, start_time, event_id, speaker_id) 
+              VALUES (?, ?, ?, ?, 1, 1)";
+    
+    $stmt = mysqli_prepare($connection, $query);
+    
+    // "ssbs" means: string, string, blob, string
+    mysqli_stmt_bind_param($stmt, "ssbs", $topic, $disc, $imgData, $start_time);
+    
+    // Send the binary data in chunks
+    mysqli_stmt_send_long_data($stmt, 2, $imgData);
 
-    $query = "INSERT INTO workshop (topic, disc, img, start_time, event_id, speaker_id) 
-              VALUES ('$topic', '$disc', '$img', '$start_time', 1, 1)";
-
-    if (mysqli_query($connection, $query)) {
+    if (mysqli_stmt_execute($stmt)) {
         header("Location: ../views/pages/admin_workshops.php");
         exit();
     } else {
         die("Database Error: " . mysqli_error($connection));
     }
 }
-?>
