@@ -13,7 +13,7 @@ $old    = ['password' => '', 'email' => ''];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = (new loginController($connection))->login($_POST);
-    echo $result;
+ 
     if ($result['success']) {
         header('Location: ../../index.php');
         exit;
@@ -54,8 +54,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <input name='password' type="password" id="password" class="menna-input-field" placeholder="Enter your password" required style="width: 100%;" value="<?= $old['password'] ?>">
 
                     <i class="fas fa-eye" id="togglePassword" style="position: absolute; right: 20px; top: 30%; cursor: pointer; color: #7b61ff; font-size: 18px;"></i>
-                    <?php if (count($errors) > 0) ?>
+                    <?php if (count($errors) > 0): ?>
                     <span class="menna-error"><?= $errors[0] ?></span>
+                    <?php endif; ?>
                 </div>
                 <button type="submit" class="menna-submit-btn">Login</button>
             </form>

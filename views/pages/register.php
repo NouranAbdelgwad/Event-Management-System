@@ -1,6 +1,10 @@
 <?php
 session_start();
+if (isset($_SESSION['user'])) {
+    header('Location: ../../index.php');
 
+    exit();
+}  
 require_once __DIR__ . '/../../config/db_connection.php';
 require_once __DIR__ . '/../../controllers/RegisterController.php';
 
