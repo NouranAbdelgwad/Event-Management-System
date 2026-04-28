@@ -14,7 +14,7 @@ $old    = ['username' => '', 'email' => ''];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = (new RegisterController($connection))->register($_POST, $_FILES);
 
-    if ($result['success']) { header('Location: ../../index.php'); exit; }
+    if ($result['success']) { header('Location: home.php'); exit; }
 
     $errors          = $result['errors'];
     $old['username'] = htmlspecialchars(trim($_POST['username'] ?? ''));

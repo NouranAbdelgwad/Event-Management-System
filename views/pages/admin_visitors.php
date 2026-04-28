@@ -1,3 +1,6 @@
+<?php 
+include("../../controllers/AdminVisitorsController.php"); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,10 +11,7 @@
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #fdfdfd; margin: 0; }
         .admin-container { max-width: 1100px; margin: 40px auto; padding: 20px; }
-        
         h2 { color: #472480; margin-bottom: 25px; }
-
-        /* Table Styling matching your branding */
         .visitors-table {
             width: 100%;
             border-collapse: collapse;
@@ -20,33 +20,34 @@
             border-radius: 10px;
             overflow: hidden;
         }
-
         .visitors-table th {
-            background-color: #472480; /* Your purple color */
+            background-color: #472480;
             color: white;
             padding: 15px;
             text-align: left;
         }
-
         .visitors-table td {
             padding: 12px 15px;
             border-bottom: 1px solid #eee;
             color: #333;
         }
-
         .visitors-table tr:hover { background-color: #f8f7ff; }
-        .cancel{
+        .cancel {
             color: red;
             border-radius: 10px;
             border: 1px red solid;
             background-color: transparent;
-            color: red;
+            padding: 5px 15px;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
         }
-</style>
+        .cancel:hover { background-color: red; color: white; }
+    </style>
 </head>
 <body>
     <?php 
-    $navType = "admin";
+    $navType = "admin-dashboard";
     include("../components/navbar.php"); 
     ?>
 
@@ -59,25 +60,30 @@
                     <th>ID</th>
                     <th>Full Name</th>
                     <th>Email Address</th>
-                    <th>Workshop</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>#001</td>
-                    <td>Ahmed Ali</td>
-                    <td>ahmed@mail.com</td>
-                    <td>AI Fundamentals</td>
-                    <td><button class="cancel">Cancel</button></td>
-                </tr>
-                <tr>
-                    <td>#002</td>
-                    <td>Sara Mohamed</td>
-                    <td>sara@mail.com</td>
-                    <td>Design with AI</td>
-                    <td><button class="cancel" >Cancel</button></td>
-                </tr>
+                <?php 
+                if (isset($result) && mysqli_num_rows($result) > 0) {
+                    while($row = mysqli_fetch_assoc($result)) {
+                        echo "<tr>";
+                        echo "<td>#" . $row['id'] . "</td>";
+                        echo "<td>" . $row['name'] . "</td>";
+                        echo "<td>" . $row['email'] . "</td>";
+                        echo "<td>
+                                <a href='../../controllers/AdminVisitorsController.php?delete_id=" . $row['id'] . "' 
+                                   class='cancel' 
+                                   onclick='return confirm(\"Are you sure you want to delete this visitor?\")'>
+                                   Cancel
+                                </a>
+                              </td>";
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='4' style='text-align:center;'>No visitors found in database.</td></tr>";
+                }
+                ?>
             </tbody>
         </table>
     </div>
