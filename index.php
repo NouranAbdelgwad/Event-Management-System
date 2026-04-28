@@ -1,8 +1,13 @@
 <?php
 session_start();
-$role = $_SESSION['user']['role'];
-$nav = ['admin' => 'admin-dashboard', 'user' => 'home'];
-?>
+if(isset($_SESSION['user'])){
+    $role = $_SESSION['user']['role'];
+}
+else{
+    $role = 'user';
+}
+$nav = ['admin'=>'admin-dashboard','user'=>'home'];
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 
