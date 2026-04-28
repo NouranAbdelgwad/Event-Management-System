@@ -5,7 +5,7 @@ include "../config/db_connection.php";
 // cancel workshop
 
 if (isset($_POST['cancel_event'])) {
-    $user_id = 1; 
+    $user_id = $_SESSION["user_id"]; 
     $workshop_id = $_POST['workshop_id'];
 
     $sql = "DELETE FROM attendance WHERE user = $user_id AND workshop = $workshop_id";
