@@ -1,3 +1,44 @@
+<?php
+$conn = new mysqli("localhost", "root", "", "event_management");
+
+$id = $_GET['id'];
+
+$result = $conn->query("
+SELECT workshop.*, speaker.name AS speaker_name
+FROM workshop
+LEFT JOIN speaker ON workshop.speaker_id = speaker.id
+WHERE workshop.id = $id
+");
+$data = $result->fetch_assoc();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $title = $_POST['title'];
+    $date = $_POST['date'];
+    $description = $_POST['description'];
+    $speaker_name = $_POST['speaker']; // Get the speaker name from the form
+    $speaker_id = $data['speaker_id']; // Use the speaker_id from the initial SELECT query
+
+    // 1. Update the Speaker Table
+    if ($speaker_id) {
+        $sql_speaker = "UPDATE speaker SET name='$speaker_name' WHERE id=$speaker_id";
+        $conn->query($sql_speaker);
+    }
+
+    // 2. Update the Workshop Table
+    $sql_workshop = "UPDATE workshop SET 
+            name='$title',
+            start_time='$date',
+            disc='$description'
+            WHERE id=$id";
+
+    if ($conn->query($sql_workshop)) {
+        header("Location: admin_workshops.php");
+        exit();
+    } else {
+        echo $conn->error;
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,45 +72,49 @@
     include("../components/navbar.php"); 
     ?>
 
-    <div class="form-container">
-        <a href="admin_workshops.php" class="back-btn">← Back to Dashboard</a>
-        <h2>Edit Workshop Details</h2>
+   <div class="form-container">
+    <a href="admin_workshops.php" class="back-btn">← Back to Dashboard</a>
+    <h2>Edit Workshop Details</h2>
+    
+    <form method="POST" enctype="multipart/form-data">
+
+        <!-- ID hidden -->
+        <input type="hidden" name="id" value="<?= $data['id'] ?>">
+
+        <div class="form-group">
+            <label>Workshop Title</label>
+            <input type="text" name="title" value="<?= $data['name'] ?>">
+        </div>
         
-        <form action="#" method="POST">
-            <div class="form-group">
-                <label>Workshop Title</label>
-                <input type="text" name="title" value="AI for Designers">
-            </div>
-            
-            <div class="form-group">
-                <label>Speaker Name</label>
-                <input type="text" name="speaker" value="Eng. Ziad Abdelazeem">
-            </div>
+        <div class="form-group">
+            <label>Speaker Name</label>
+            <input type="text" name="speaker" value="<?= $data['speaker_name'] ?? '' ?>">
+        </div>
 
-            <div class="form-group" style="display: flex; gap: 15px;">
-                <div style="flex: 1;">
-                    <label>Date</label>
-                    <input type="date" name="date" value="2026-04-25">
-                </div>
-                <div style="flex: 1;">
-                    <label>Time</label>
-                    <input type="time" name="time" value="17:00">
-                </div>
+        <div class="form-group" style="display: flex; gap: 15px;">
+            <div style="flex: 1;">
+                <label>Date</label>
+                <input type="date" name="date" value="<?= $data['start_time'] ?>">
             </div>
-
-            <div class="form-group">
-                <label>Change Image (Optional)</label>
-                <input type="file" name="image">
+            <div style="flex: 1;">
+                <label>Time</label>
+                <input type="time" name="time" value="">
             </div>
+        </div>
 
-            <div class="form-group">
-                <label>Description</label>
-                <textarea name="description" rows="5">Master the tools that are redefining the design industry.</textarea>
-            </div>
+        <div class="form-group">
+            <label>Change Image (Optional)</label>
+            <input type="file" name="image">
+        </div>
 
-            <button type="submit" class="btn-update">Update Workshop Information</button>
-        </form>
-    </div>
+        <div class="form-group">
+            <label>Description</label>
+            <textarea name="description" rows="5"><?= $data['disc'] ?></textarea>
+        </div>
+
+        <button type="submit" class="btn-update">Update Workshop Information</button>
+    </form>
+</div>
 
     <?php include("../components/footer.php"); ?>
 </body>

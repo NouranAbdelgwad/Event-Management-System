@@ -11,16 +11,15 @@
 <body>
 
     <div class="container">
-        <header class="main-header">
-            <h1>AI EVENT.</h1>
-            <div class="user-icon">👤</div>
-        </header>
+        <?php 
+        $navType = "profile-icon";
+        include "../components/navbar.php" ?>
 
         <main class="profile-section">
             <?php
-            include("../../config/db_connection.php");
+            // include("./config/db_connection.php");
             include("../../controllers/ProfileController.php");
-            $user_id = 1;
+            $user_id = $_SESSION['user_id'];
             $sql = "SELECT * FROM user WHERE id = $user_id";
             $result = mysqli_query($connection, $sql);
             $user = mysqli_fetch_assoc($result);
@@ -35,6 +34,9 @@
                         <input type="email" name="email" value="<?php echo $user['email']; ?>">
                     </div>
                     <button class="edit-btn" type="submit" name="update_profile">Update Profile</button>
+                </form>
+                <form action="../../controllers/logoutController.php" method="post">
+                    <button class="edit-btn" type="submit">Log out</button>
                 </form>
             </section>
 

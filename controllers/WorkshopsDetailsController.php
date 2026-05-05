@@ -1,6 +1,5 @@
 <?php
 include "../../config/db_connection.php";
-session_start();
 
 // read workshop
 $id = $_GET["id"];
@@ -13,7 +12,7 @@ $data = mysqli_query($connection, $sql);
 $data = mysqli_fetch_assoc($data);
 
 // check if joined 
-$user_id = 1;
+$user_id = $_SESSION["user_id"];
 $workshop_id = $id;
 
 $check_sql = "SELECT * FROM attendance WHERE user = $user_id AND workshop = $workshop_id";

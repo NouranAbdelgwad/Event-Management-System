@@ -33,7 +33,7 @@
         <a href="admin_workshops.php" class="back-btn">← Back to Dashboard</a>
         <h2>Create New Workshop</h2>
         
-        <form action="../../controllers/AdminWorkshopsController.php" method="POST" enctype="multipart/form-data">
+        <form action="../../controllers/CreateWorkshopsController.php" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label>Workshop Title</label>
                 <input type="text" name="title" placeholder="e.g. AI for Designers" required>

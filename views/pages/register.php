@@ -1,6 +1,10 @@
 <?php
 session_start();
+if (isset($_SESSION['user'])) {
+    header('Location: home.php');
 
+    exit();
+}  
 require_once __DIR__ . '/../../config/db_connection.php';
 require_once __DIR__ . '/../../controllers/RegisterController.php';
 
@@ -10,7 +14,7 @@ $old    = ['username' => '', 'email' => ''];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = (new RegisterController($connection))->register($_POST, $_FILES);
 
-    if ($result['success']) { header('Location: ../../home.php'); exit; }
+    if ($result['success']) { header('Location: login.php'); exit; }
 
     $errors          = $result['errors'];
     $old['username'] = htmlspecialchars(trim($_POST['username'] ?? ''));

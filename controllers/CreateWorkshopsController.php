@@ -1,32 +1,38 @@
 <?php
-require_once "../../config/db_connection.php";
+require_once __DIR__ . "/../config/db_connection.php";
 
 if (isset($_POST['create_workshop'])) {
-    $topic = mysqli_real_escape_string($conn, $_POST['title']); 
-    $disc = mysqli_real_escape_string($conn, $_POST['description']); 
+    $topic = $_POST['title'];
+    $disc  = $_POST['description']; 
+    $speaker_name = $_POST['speaker']; // الاسم اللي جاي من الفورم
     $start_time = $_POST['date'] . ' ' . $_POST['time']; 
-    
-    $img = "default.jpg"; 
-    if (!empty($_FILES['image']['name'])) {
-        $img = time() . "_" . $_FILES['image']['name'];
-        $target_dir = "../../assets/images/workshops/";
-        if (!is_dir($target_dir)) { 
-            mkdir($target_dir, 0777, true); 
-        }
-        move_uploaded_file($_FILES['image']['tmp_name'], $target_dir . $img);
+
+    // 1. تسجيل الـ Speaker الأول عشان ناخد الـ ID بتاعه
+    $sql_speaker = "INSERT INTO speaker (name) VALUES (?)";
+    $stmt_sp = mysqli_prepare($connection, $sql_speaker);
+    mysqli_stmt_bind_param($stmt_sp, "s", $speaker_name);
+    mysqli_stmt_execute($stmt_sp);
+    $new_speaker_id = mysqli_insert_id($connection); // ده الـ ID الجديد
+
+    // 2. معالجة الصورة (Binary)
+    $imgData = null;
+    if (!empty($_FILES['image']['tmp_name'])) {
+        $imgData = file_get_contents($_FILES['image']['tmp_name']);
     }
-
-    mysqli_query($conn, "INSERT IGNORE INTO event (id, name) VALUES (1, 'General Event')");
-    mysqli_query($conn, "INSERT IGNORE INTO speaker (id, name) VALUES (1, 'General Speaker')");
-
     $query = "INSERT INTO workshop (topic, disc, img, start_time, event_id, speaker_id) 
-              VALUES ('$topic', '$disc', '$img', '$start_time', 1, 1)";
-
-    if (mysqli_query($conn, $query)) {
-        header("Location: ../views/pages/admin_workshops.php");
+              VALUES (?, ?, ?, ?, 1, ?)";
+    
+    $stmt = mysqli_prepare($connection, $query);
+    
+    mysqli_stmt_bind_param($stmt, "ssbsi", $topic, $disc, $imgData, $start_time, $new_speaker_id);
+    
+    if ($imgData) {
+        mysqli_stmt_send_long_data($stmt, 2, $imgData);
+    }
+    if (mysqli_stmt_execute($stmt)) {
+        header("Location: ../views/pages/admin_workshops.php?status=success");
         exit();
     } else {
-        die("Database Error: " . mysqli_error($conn));
+        die("Database Error: " . mysqli_error($connection));
     }
 }
-?>

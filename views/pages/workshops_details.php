@@ -155,7 +155,14 @@
 
 <body>
     <?php
-    $navType = "home";
+    session_start();
+    if ($_SESSION["user"]["role"] == "user") {
+        $navType = "profile-icon";
+    } elseif ($_SESSION["user"]["role"] == "admin") {
+        $navType = "admin-dashboard";
+    } else {
+        $navType = "home";
+    }
     include("../components/navbar.php");
     include "../../controllers/WorkshopsDetailsController.php";
     ?>
@@ -195,8 +202,6 @@
                 <a href="workshops.php" style="color: #4B2A85; font-weight: bold; text-decoration: none; font-size: 0.8rem;">See All</a>
             </div>
             <?php
-            include("../../config/db_connection.php");
-            include("../../controllers/HomeController.php");
             include "../components/workshop_card.php"; ?>
         </div>
     </div>

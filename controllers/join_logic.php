@@ -4,7 +4,7 @@ session_start();
 
 
 if (isset($_POST['join_event'])) {
-    $user_id = 1;
+    $user_id = $_SESSION["user_id"];
     $workshop_id = $_POST['workshop_id'];
 
     $sql = "INSERT INTO attendance (user, workshop) VALUES ('$user_id', '$workshop_id')";
