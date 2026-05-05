@@ -41,7 +41,7 @@
             
             <div class="form-group">
                 <label>Speaker Name</label>
-                <input type="text" name="speaker" placeholder="e.g. Eng. Ziad Abdelazeem" required>
+                <input type="text" name="speaker" placeholder="e.g. Ziad Abdelazeem" required>
             </div>
 
             <div class="form-group" style="display: flex; gap: 15px;">
