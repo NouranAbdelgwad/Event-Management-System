@@ -1,5 +1,5 @@
 <?php
-include("../../controllers/AdminVisitorsContoller.php");
+include("../../controllers/AdminVisitorsController.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
