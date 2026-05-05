@@ -1,5 +1,5 @@
 <?php
-require_once "../../config/db_connection.php";
+@include __DIR__ . '/../config/db_connection.php';
 
 if (isset($_POST['delete_user_id'])) {
     // 1. Sanitize the ID

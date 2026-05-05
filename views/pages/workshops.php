@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Event Platform</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
     <style>
         body {
             margin: 0;
@@ -159,10 +160,22 @@
 
 <body>
     <div class="hero-section">
-        <div class="navbar">
-            <div class="worksops-page-logo">AI EVENT.</div>
-            <button class="join-event-btn">Join Event</button>
-        </div>
+        <?php
+session_start();
+
+$userRole = $_SESSION['user']['role'] ?? "guest";
+$userId   = $_SESSION['user']['id'] ?? null;
+
+if ($userRole == "user") {
+    $navType = "profile-icon";
+} elseif ($userRole == "admin") {
+    $navType = "admin-dashboard";
+} else {
+    $navType = "home";
+}
+
+include("../components/navbar.php");
+?>
         <div class="hero-content">
             <h1>Our Workshops</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>

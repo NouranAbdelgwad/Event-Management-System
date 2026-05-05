@@ -9,7 +9,6 @@ class loginController
 
     public function login($data)
     {
-       
         $email = $data['email'];
         $usr_pass = $data['password'];
         $qu = mysqli_prepare($this->con, "SELECT * FROM user WHERE email = ?");
