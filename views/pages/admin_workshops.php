@@ -1,319 +1,231 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "event_management");
+require_once __DIR__ . "/../../config/db_connection.php"; // تأكدي من مسار الاتصال الصحيح
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+// التحقق من الاتصال
+if ($connection->connect_error) {
+    die("Connection failed: " . $connection->connect_error);
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Event - Workshops</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Event - Workshops Management</title>
     <link rel="stylesheet" href="../../assets/css/style.css">
 
+    <style>
+        :root {
+            --purple: #472480;
+            --light-purple: #eee9f6;
+            --green: #16a34a;
+        }
 
-<style>
-:root {
-    --purple: #472480;
-}
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+        }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f3f3f3;
-    overflow-x: hidden;
-}
+        .container {
+            padding: 40px;
+            max-width: 1200px; /* تحديد عرض الصفحة لتكون في المنتصف */
+            margin: 0 auto;
+        }
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 40px;
-    align-items: center;
-    background: white;
-}
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
 
-.logo {
-    color: var(--purple);
-    margin: 0;
-}
+        .header-section h2 {
+            color: var(--purple);
+            margin: 0;
+        }
 
-.nav-links span {
-    margin-left: 20px;
-    color: gray;
-}
+        .create-btn {
+            border: 2px solid var(--purple);
+            color: var(--purple);
+            padding: 10px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
 
-.nav-links .active {
-    color: black;
-    font-weight: bold;
-}
+        .create-btn:hover {
+            background: var(--purple);
+            color: white;
+        }
 
-.container {
-    padding: 30px 40px;
-}
+        /* تنسيق الجدول */
+        .admin-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 15px;
+            table-layout: fixed; /* لضمان ثبات عرض الأعمدة */
+        }
 
-.header-section {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+        .admin-table th {
+            background: var(--light-purple);
+            padding: 15px;
+            color: var(--purple);
+            text-align: center;
+            font-weight: 600;
+        }
 
-.create-btn {
-    border: 1px solid var(--purple);
-    color: var(--purple);
-    padding: 10px 25px;
-    border-radius: 30px;
-    background: transparent;
-    cursor: pointer;
-}
+        .admin-table tbody tr {
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
 
-.admin-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0 20px;
-    margin-top: 20px;
-}
+        .admin-table td {
+            padding: 15px;
+            text-align: center;
+            vertical-align: middle;
+            color: #444;
+        }
 
-.admin-table th {
-    background: #eee9f6;
-    padding: 15px;
-    color: var(--purple);
-    text-align: left;
-}
+        /* ضبط مقاس الصورة الثابت */
+        .workshop-img {
+            width: 120px;
+            height: 80px;
+            border-radius: 8px;
+            object-fit: cover; /* لضمان عدم تمطط الصورة */
+            display: block;
+            margin: 0 auto;
+            border: 1px solid #ddd;
+        }
 
-.admin-table td {
-    padding: 15px;
-}
+        .speaker-name {
+            color: var(--purple);
+            font-weight: bold;
+        }
 
-.admin-table tbody tr {
-    background: white;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
+        .actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+        }
 
-.workshop-img {
-    width: 80px;
-    height: 60px;
-    border-radius: 10px;
-    object-fit: cover;
-}
+        .btn-edit {
+            background: var(--green);
+            border: none;
+            padding: 8px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
 
-.speaker {
-    color: var(--purple);
-    font-weight: bold;
-}
+        .btn-edit a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
 
-.time-style {
-    color: var(--purple);
-    font-weight: normal;
-}
+        .btn-delete {
+            background: transparent;
+            color: #dc3545;
+            border: 1px solid #dc3545;
+            padding: 7px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
-.actions {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
+        .btn-delete:hover {
+            background: #dc3545;
+            color: white;
+        }
 
-.btn-edit {
-    background: #16a34a;
-    color: white;
-    border: none;
-    padding: 8px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-}
-
-.btn-delete {
-    background: transparent;
-    color: red;
-    border: 1px solid red;
-    padding: 8px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-}
-
-.footer {
-    background: var(--purple);
-    color: white;
-    text-align: left;
-    padding: 15px 40px;
-    width: 100%;
-    box-sizing: border-box;
-    margin-top: 40px;
-}
-</style>
-
+        .footer {
+            background: var(--purple);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+    </style>
 </head>
-
 <body>
 
-    <?php 
+<?php 
     $navType = "admin-dashboard";
     include("../components/navbar.php"); 
-    ?>
+?>
 
 <div class="container">
-
     <div class="header-section">
-        <h2>All Workshops</h2>
-        <a class="create-btn" href="create_Workshop.php">Create Workshop</a>
+        <h2>Workshop Management Panel</h2>
+        <a class="create-btn" href="create_Workshop.php">+ Create New Workshop</a>
     </div>
 
     <table class="admin-table">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Image</th>
-                <th>Title</th>
-                <th>Speaker</th>
-                <th>Time</th>
-                <th>Action</th>
+                <th style="width: 8%;">ID</th>
+                <th style="width: 20%;">Image</th>
+                <th style="width: 22%;">Workshop Title</th>
+                <th style="width: 15%;">Speaker</th>
+                <th style="width: 15%;">Date & Time</th>
+                <th style="width: 20%;">Actions</th>
             </tr>
         </thead>
-
         <tbody>
-
-            <!-- ROW 1 -->
-            <!-- <tr>
-                <td>1</td>
-                <td><img src="assets/images/ai2.png" class="workshop-img"></td>
-                <td>AI for Designers</td>
-                <td class="speaker">Sarah Ahmed</td>
-                <td class="time-style">5:00 PM - 7:00 PM</td>
-                <td class="actions">
-
-                    <button class="btn-edit">Edit</button>
-
-                    <form method="POST" action="../../controllers/AdminWorkshopsController.php">
-                        <input type="hidden" name="id" value="1">
-                        <button type="submit" name="delete" class="btn-delete">Delete</button>
-                    </form>
-
-                </td>
-            </tr> -->
-
-
-
-
-
-            <tbody>
-
-<?php
-$result = $conn->query("SELECT workshop.*, speaker.name as speaker_name
-FROM workshop
-JOIN speaker
-ON workshop.speaker_id=speaker.id");
-
-while($row = $result->fetch_assoc()) {
-?>
-
-<tr>
-    <td><?= $row['id'] ?></td>
-    <td>
-        <?php
-            $imageData = base64_encode($row['img']);
-            $imageType = "image/jpeg";
-            echo '<img src="data:' . $imageType . ';base64,' . $imageData . '" class="main-img" alt="Workshop">';
-            ?>
-    </td>
-
-  <td><?= $row['name'] ?></td>
-<td><?= $row['speaker_name'] ?></td>
-
-<td>
-    <?= $row['start_time'] ?> - <?= $row['end_time'] ?>
-</td>
-
-    <td class="actions">
- <button class="btn-edit"><a href="edit_workshop.php?id=<?= $row['id'] ?>">Edit</a></button>
-        <form method="POST" action="../../controllers/AdminWorkshopsController.php">
-            <input type="hidden" name="id" value="<?= $row['id'] ?>">
-            <button type="submit" name="delete" class="btn-delete">Delete</button>
-        </form>
-
-    </td>
-</tr>
-
-<?php } ?>
-
-</tbody>
-
-
-
-
-
-            <!-- ROW 2 -->
-            <!-- <tr>
-                <td>2</td>
-                <td><img src="assets/images/ai2.png" class="workshop-img"></td>
-                <td>AI For Designers</td>
-                <td class="speaker">Sarah Ahmed</td>
-                <td class="time-style">5:00 PM - 7:00 PM</td>
-                <td class="actions">
-
-                    <button class="btn-edit">Edit</button>
-
-                    <form method="POST" action="../../controllers/AdminWorkshopsController.php">
-                        <input type="hidden" name="id" value="2">
-                        <button type="submit" name="delete" class="btn-delete">Delete</button>
-                    </form>
-
-                </td>
-            </tr> -->
-
-
-
-
-
-
+            <?php
+            // استعلام جلب البيانات مع ربط جدول الـ Speaker
+            $query = "SELECT workshop.*, speaker.name as speaker_name 
+                      FROM workshop 
+                      JOIN speaker ON workshop.speaker_id = speaker.id 
+                      ORDER BY workshop.id DESC";
             
+            $result = $connection->query($query);
 
-            <!-- ROW 3 -->
-            <!-- <tr>
-                <td>3</td>
-                <td><img src="assets/images/ai2.png" class="workshop-img"></td>
-                <td>AI For Designers</td>
-                <td class="speaker">Sarah Ahmed</td>
-                <td class="time-style">5:00 PM - 7:00 PM</td>
-                <td class="actions">
-
-                    <button class="btn-edit">Edit</button>
-
-                    <form method="POST" action="../../controllers/AdminWorkshopsController.php">
-                        <input type="hidden" name="id" value="3">
-                        <button type="submit" name="delete" class="btn-delete">Delete</button>
-                    </form>
-
-                </td>
-            </tr> -->
-
-            <!-- ROW 4 -->
-            <!-- <tr>
-                <td>4</td>
-                <td><img src="assets/images/ai2.png" class="workshop-img"></td>
-                <td>AI For Designers</td>
-                <td class="speaker">Sarah Ahmed</td>
-                <td class="time-style">5:00 PM - 7:00 PM</td>
-                <td class="actions">
-
-                    <button class="btn-edit">Edit</button>
-
-                    <form method="POST" action="../../controllers/AdminWorkshopsController.php">
-                        <input type="hidden" name="id" value="4">
-                        <button type="submit" name="delete" class="btn-delete">Delete</button>
-                    </form>
-
-                </td>
-            </tr> -->
-
+            if ($result && $result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                    ?>
+                    <tr>
+                        <td><strong>#<?= $row['id'] ?></strong></td>
+                        <td>
+                            <?php if (!empty($row['img'])): ?>
+                                <img src="data:image/jpeg;base64,<?= base64_encode($row['img']) ?>" class="workshop-img" alt="Workshop">
+                            <?php else: ?>
+                                <div style="font-size: 12px; color: #999;">No Image</div>
+                            <?php endif; ?>
+                        </td>
+                        <td style="font-weight: 500;"><?= htmlspecialchars($row['topic']) ?></td>
+                        <td class="speaker-name"><?= htmlspecialchars($row['speaker_name']) ?></td>
+                        <td>
+                            <div style="font-size: 14px;">
+                                <?= date('Y-m-d', strtotime($row['start_time'])) ?><br>
+                                <span style="color: #666;"><?= date('h:i A', strtotime($row['start_time'])) ?></span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="actions">
+                                <button class="btn-edit">
+                                    <a href="edit_workshop.php?id=<?= $row['id'] ?>">Edit</a>
+                                </button>
+                                
+                                <form method="POST" action="../../controllers/AdminWorkshopsController.php" onsubmit="return confirm('Are you sure you want to delete this workshop?');">
+                                    <input type="hidden" name="id" value="<?= $row['id'] ?>">
+                                    <button type="submit" name="delete" class="btn-delete">Delete</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php
+                }
+            } else {
+                echo "<tr><td colspan='6'>No workshops found.</td></tr>";
+            }
+            ?>
         </tbody>
     </table>
-
 </div>
-
-<div class="footer">
-    © 2026 AI Event Platform. All rights reserved.
-</div>
-
+<?php include("../components/footer.php"); ?>
 </body>
 </html>
