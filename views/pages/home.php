@@ -41,22 +41,22 @@
 </head>
 
 <body>
-<?php
-session_start();
+    <?php
+    session_start();
 
-$userRole = $_SESSION['user']['role'] ?? "guest";
-$userId   = $_SESSION['user']['id'] ?? null;
+    $userRole = $_SESSION['user']['role'] ?? "guest";
+    $userId   = $_SESSION['user']['id'] ?? null;
 
-if ($userRole == "user") {
-    $navType = "profile-icon";
-} elseif ($userRole == "admin") {
-    $navType = "admin-dashboard";
-} else {
-    $navType = "home";
-}
+    if ($userRole == "user") {
+        $navType = "profile-icon";
+    } elseif ($userRole == "admin") {
+        $navType = "admin-dashboard";
+    } else {
+        $navType = "home";
+    }
 
-include("../components/navbar.php");
-?>
+    include("../components/navbar.php");
+    ?>
 
     <section class="event-container">
 
@@ -70,18 +70,24 @@ include("../components/navbar.php");
                 <h1>Don't Miss Your <span>Chance</span>, and join us</h1>
                 <p>Empowering event creators through every stage of the journey.</p>
                 <div class="hero-buttons">
-    <?php if (($userRole ?? null) === "admin"): ?>
-        <a href="create_workshop.php">
-            <button class="btn-secondary">Create Workshop</button>
-        </a>
-    <?php endif; ?>
+                    <?php if (($userRole ?? null) === "admin"): ?>
+                        <a href="create_workshop.php">
+                            <button class="btn-secondary">Create Workshop</button>
+                        </a>
+                    <?php endif; ?>
 
-    <?php if (!$userId): ?>
-        <a href="register.php">
-            <button class="btn-primary">Join Event</button>
-        </a>
-    <?php endif; ?>
-</div>
+                    <?php if ($userId): ?>
+                        <a href="workshops.php">
+                            <button class="btn-primary">see workshops</button>
+                        </a>
+                    <?php endif; ?>
+
+                    <?php if (!$userId): ?>
+                        <a href="register.php">
+                            <button class="btn-primary">Join Event</button>
+                        </a>
+                    <?php endif; ?>
+                </div>
             </div>
 
         </div>
